@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>B&M Consulting — Sites web, design & IT pour particuliers et entreprises</title>
-<meta name="description" content="B&M Consulting accompagne particuliers et entreprises : conception de site web, design graphique, stratégie marketing, optimisation de process et support IT.">
+<title id="pageTitle">B&M Consulting — Sites web, design & IT pour particuliers et entreprises</title>
+<meta id="pageDesc" name="description" content="B&M Consulting accompagne particuliers et entreprises : conception de site web, design graphique, stratégie marketing, optimisation de process et support IT.">
 <style>
   :root{
     --navy:#0B2447;
@@ -75,6 +75,9 @@
   .btn-ghost-white:hover{background:rgba(255,255,255,0.2);}
   .menu-toggle{display:none; background:none; border:1px solid var(--border); border-radius:8px; padding:8px; cursor:pointer;}
   .menu-toggle svg{display:block;}
+  .lang-switch{display:flex; border:1px solid var(--border); border-radius:999px; padding:3px; gap:2px; flex-shrink:0;}
+  .lang-btn{border:none; background:transparent; padding:6px 11px; border-radius:999px; font-size:12.5px; font-weight:800; color:var(--text-muted); cursor:pointer; letter-spacing:.02em;}
+  .lang-btn[aria-pressed="true"]{background:var(--navy); color:#fff;}
 
   /* Hero */
   .hero{
@@ -246,7 +249,7 @@
 </style>
 </head>
 <body>
-<a class="skip-link" href="#main">Aller au contenu principal</a>
+<a class="skip-link" href="#main" data-i18n="skip_link">Aller au contenu principal</a>
 
 <header>
   <div class="container nav-wrap">
@@ -254,18 +257,22 @@
       <span class="mark">B&M</span>
       <span class="name">B&M <span>Consulting</span></span>
     </a>
-    <nav class="primary" aria-label="Navigation principale">
+    <nav class="primary" aria-label="Navigation principale" data-i18n-aria="aria_navPrimary">
       <ul>
-        <li><a href="#services">Services</a></li>
-        <li><a href="#process">Notre méthode</a></li>
-        <li><a href="#approche">Notre approche</a></li>
-        <li><a href="#contact">Contact</a></li>
+        <li><a href="#services" data-i18n="nav_services">Services</a></li>
+        <li><a href="#process" data-i18n="nav_method">Notre méthode</a></li>
+        <li><a href="#approche" data-i18n="nav_approach">Notre approche</a></li>
+        <li><a href="#contact" data-i18n="nav_contact">Contact</a></li>
       </ul>
     </nav>
     <div style="display:flex; align-items:center; gap:12px;">
-      <a href="#contact" class="btn btn-outline nav-cta-desktop">Nous contacter</a>
-      <a href="#contact" class="btn btn-primary">Devis gratuit</a>
-      <button class="menu-toggle" aria-label="Ouvrir le menu" aria-expanded="false" id="menuToggle">
+      <div class="lang-switch" role="group" aria-label="Langue / Language">
+        <button class="lang-btn" data-lang="fr" aria-pressed="true">FR</button>
+        <button class="lang-btn" data-lang="en" aria-pressed="false">EN</button>
+      </div>
+      <a href="#contact" class="btn btn-outline nav-cta-desktop" data-i18n="nav_contactBtn">Nous contacter</a>
+      <a href="#contact" class="btn btn-primary" data-i18n="nav_quoteBtn">Devis gratuit</a>
+      <button class="menu-toggle" aria-label="Ouvrir le menu" data-i18n-aria="aria_openMenu" aria-expanded="false" id="menuToggle">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
       </button>
     </div>
@@ -277,35 +284,35 @@
   <section class="hero" style="padding-top:88px;">
     <div class="container hero-inner">
       <div>
-        <span class="eyebrow"><span class="dot"></span> Un interlocuteur unique, de A à Z</span>
-        <h1>Votre partenaire digital &amp; IT, de la stratégie à l'exécution.</h1>
-        <p class="lead">Sites web, identité visuelle, marketing, optimisation de vos process et support informatique — pour les particuliers comme pour les entreprises.</p>
+        <span class="eyebrow"><span class="dot"></span> <span data-i18n="hero_eyebrow">Un interlocuteur unique, de A à Z</span></span>
+        <h1 data-i18n="hero_h1">Votre partenaire digital &amp; IT, de la stratégie à l'exécution.</h1>
+        <p class="lead" data-i18n="hero_lead">Sites web, identité visuelle, marketing, optimisation de vos process et support informatique — pour les particuliers comme pour les entreprises.</p>
         <div class="hero-ctas">
-          <a href="#contact" class="btn btn-primary">Demander un devis gratuit</a>
-          <a href="#services" class="btn btn-ghost-white">Voir nos services</a>
+          <a href="#contact" class="btn btn-primary" data-i18n="hero_ctaPrimary">Demander un devis gratuit</a>
+          <a href="#services" class="btn btn-ghost-white" data-i18n="hero_ctaSecondary">Voir nos services</a>
         </div>
       </div>
       <div class="hero-visual" aria-hidden="true">
         <div class="card">
           <div class="mini-row">
-            <span class="label">Conception de site web</span>
-            <span class="pill pill-accent">Pro &amp; Particulier</span>
+            <span class="label" data-i18n="card_web">Conception de site web</span>
+            <span class="pill pill-accent" data-i18n="val_proPart">Pro &amp; Particulier</span>
           </div>
           <div class="mini-row">
-            <span class="label">Stratégie marketing A à Z</span>
-            <span class="val">Entreprises</span>
+            <span class="label" data-i18n="card_marketing">Stratégie marketing A à Z</span>
+            <span class="val" data-i18n="val_pro">Entreprises</span>
           </div>
           <div class="mini-row">
-            <span class="label">Support IT à domicile</span>
-            <span class="val">Particuliers</span>
+            <span class="label" data-i18n="card_support">Support IT à domicile</span>
+            <span class="val" data-i18n="val_part">Particuliers</span>
           </div>
           <div class="mini-row">
-            <span class="label">Optimisation des process</span>
-            <span class="val">Entreprises</span>
+            <span class="label" data-i18n="card_process">Optimisation des process</span>
+            <span class="val" data-i18n="val_pro">Entreprises</span>
           </div>
           <div class="mini-row">
-            <span class="label">+ Graphisme, matériel IT...</span>
-            <span class="pill pill-accent">Et plus</span>
+            <span class="label" data-i18n="card_more">+ Graphisme, matériel IT...</span>
+            <span class="pill pill-accent" data-i18n="val_more">Et plus</span>
           </div>
         </div>
       </div>
@@ -317,19 +324,19 @@
     <div class="container trust-grid">
       <div class="trust-item">
         <span class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg></span>
-        <div><strong>Devis sous 24h</strong><span>Réponse rapide et sans engagement</span></div>
+        <div><strong data-i18n="trust_quote_title">Devis sous 24h</strong><span data-i18n="trust_quote_desc">Réponse rapide et sans engagement</span></div>
       </div>
       <div class="trust-item">
         <span class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3l7 4v5c0 4.5-3 8-7 9-4-1-7-4.5-7-9V7l7-4z"/></svg></span>
-        <div><strong>Accompagnement A à Z</strong><span>De l'audit à la livraison</span></div>
+        <div><strong data-i18n="trust_support_title">Accompagnement A à Z</strong><span data-i18n="trust_support_desc">De l'audit à la livraison</span></div>
       </div>
       <div class="trust-item">
         <span class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg></span>
-        <div><strong>Pros &amp; particuliers</strong><span>Une offre adaptée à chaque profil</span></div>
+        <div><strong data-i18n="trust_mix_title">Pros &amp; particuliers</strong><span data-i18n="trust_mix_desc">Une offre adaptée à chaque profil</span></div>
       </div>
       <div class="trust-item">
         <span class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l3 7h7l-5.5 4.5L18.5 21 12 16.8 5.5 21l2-7.5L2 9h7z"/></svg></span>
-        <div><strong>100% sur-mesure</strong><span>Chaque projet est unique</span></div>
+        <div><strong data-i18n="trust_custom_title">100% sur-mesure</strong><span data-i18n="trust_custom_desc">Chaque projet est unique</span></div>
       </div>
     </div>
   </div>
@@ -338,64 +345,64 @@
   <section id="services">
     <div class="container">
       <div class="section-head">
-        <span class="kicker">Nos expertises</span>
-        <h2>Six domaines, une seule équipe</h2>
-        <p>Chaque service peut être mobilisé seul ou combiné selon vos besoins — un seul interlocuteur du début à la fin. Cette liste n'est pas exhaustive : parlons de votre besoin spécifique.</p>
+        <span class="kicker" data-i18n="services_kicker">Nos expertises</span>
+        <h2 data-i18n="services_h2">Six domaines, une seule équipe</h2>
+        <p data-i18n="services_p">Chaque service peut être mobilisé seul ou combiné selon vos besoins — un seul interlocuteur du début à la fin. Cette liste n'est pas exhaustive : parlons de votre besoin spécifique.</p>
       </div>
 
-      <div class="filters" role="group" aria-label="Filtrer les services">
-        <button class="filter-btn" data-filter="all" aria-pressed="true">Tous les services</button>
-        <button class="filter-btn" data-filter="pro" aria-pressed="false">Entreprises</button>
-        <button class="filter-btn" data-filter="part" aria-pressed="false">Particuliers</button>
+      <div class="filters" role="group" aria-label="Filtrer les services" data-i18n-aria="aria_filterServices">
+        <button class="filter-btn" data-filter="all" aria-pressed="true" data-i18n="filter_all">Tous les services</button>
+        <button class="filter-btn" data-filter="pro" aria-pressed="false" data-i18n="val_pro">Entreprises</button>
+        <button class="filter-btn" data-filter="part" aria-pressed="false" data-i18n="val_part">Particuliers</button>
       </div>
 
       <div class="services-grid" id="servicesGrid">
         <article class="service-card" data-cat="pro part">
           <div class="service-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 010 18M12 3a14 14 0 000 18"/></svg></div>
-          <div class="tag-row"><span class="tag tag-pro">Entreprises</span><span class="tag tag-part">Particuliers</span></div>
-          <h3>Conception de site web</h3>
-          <p>Vitrine, e-commerce ou plateforme sur-mesure : un site rapide, sécurisé et pensé pour convertir.</p>
-          <a class="service-link" href="services.html#web">En savoir plus →</a>
+          <div class="tag-row"><span class="tag tag-pro" data-i18n="val_pro">Entreprises</span><span class="tag tag-part" data-i18n="val_part">Particuliers</span></div>
+          <h3 data-i18n="card_web">Conception de site web</h3>
+          <p data-i18n="svc_web_desc">Vitrine, e-commerce ou plateforme sur-mesure : un site rapide, sécurisé et pensé pour convertir.</p>
+          <a class="service-link" href="services.html#web" data-i18n="link_more">En savoir plus →</a>
         </article>
 
         <article class="service-card" data-cat="pro part">
           <div class="service-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="13.5" cy="6.5" r="3.5"/><circle cx="17.5" cy="17.5" r="3.5"/><circle cx="6" cy="14" r="3"/></svg></div>
-          <div class="tag-row"><span class="tag tag-pro">Entreprises</span><span class="tag tag-part">Particuliers</span></div>
-          <h3>Conception graphique</h3>
-          <p>Logo, charte graphique, supports imprimés et digitaux : une identité visuelle cohérente et mémorable, alignée sur votre positionnement.</p>
-          <a class="service-link" href="services.html#graphisme">En savoir plus →</a>
+          <div class="tag-row"><span class="tag tag-pro" data-i18n="val_pro">Entreprises</span><span class="tag tag-part" data-i18n="val_part">Particuliers</span></div>
+          <h3 data-i18n="svc_graphic_title">Conception graphique</h3>
+          <p data-i18n="svc_graphic_desc">Logo, charte graphique, supports imprimés et digitaux : une identité visuelle cohérente et mémorable, alignée sur votre positionnement.</p>
+          <a class="service-link" href="services.html#graphisme" data-i18n="link_more">En savoir plus →</a>
         </article>
 
         <article class="service-card" data-cat="pro">
           <div class="service-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 17l6-6 4 4 8-8"/><path d="M21 3h-6v6"/></svg></div>
-          <div class="tag-row"><span class="tag tag-pro">Entreprises</span></div>
-          <h3>Stratégie marketing A à Z</h3>
-          <p>Audit, positionnement, acquisition, contenu : une stratégie marketing complète, pilotée de bout en bout et mesurée.</p>
-          <a class="service-link" href="services.html#marketing">En savoir plus →</a>
+          <div class="tag-row"><span class="tag tag-pro" data-i18n="val_pro">Entreprises</span></div>
+          <h3 data-i18n="card_marketing">Stratégie marketing A à Z</h3>
+          <p data-i18n="svc_marketing_desc">Audit, positionnement, acquisition, contenu : une stratégie marketing complète, pilotée de bout en bout et mesurée.</p>
+          <a class="service-link" href="services.html#marketing" data-i18n="link_more">En savoir plus →</a>
         </article>
 
         <article class="service-card" data-cat="pro">
           <div class="service-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 00.34 1.87l.06.06a2 2 0 11-2.83 2.83l-.06-.06a1.7 1.7 0 00-1.87-.34 1.7 1.7 0 00-1 1.55V21a2 2 0 11-4 0v-.09a1.7 1.7 0 00-1-1.55 1.7 1.7 0 00-1.87.34l-.06.06a2 2 0 11-2.83-2.83l.06-.06a1.7 1.7 0 00.34-1.87 1.7 1.7 0 00-1.55-1H3a2 2 0 110-4h.09a1.7 1.7 0 001.55-1 1.7 1.7 0 00-.34-1.87l-.06-.06a2 2 0 112.83-2.83l.06.06a1.7 1.7 0 001.87.34H9a1.7 1.7 0 001-1.55V3a2 2 0 114 0v.09a1.7 1.7 0 001 1.55 1.7 1.7 0 001.87-.34l.06-.06a2 2 0 112.83 2.83l-.06.06a1.7 1.7 0 00-.34 1.87V9a1.7 1.7 0 001.55 1H21a2 2 0 110 4h-.09a1.7 1.7 0 00-1.55 1z"/></svg></div>
-          <div class="tag-row"><span class="tag tag-pro">Entreprises</span></div>
-          <h3>Optimisation de process interne</h3>
-          <p>Cartographie de vos flux, automatisation, choix des bons outils : gagnez en efficacité opérationnelle et réduisez les frictions.</p>
-          <a class="service-link" href="services.html#process">En savoir plus →</a>
+          <div class="tag-row"><span class="tag tag-pro" data-i18n="val_pro">Entreprises</span></div>
+          <h3 data-i18n="svc_process_title">Optimisation de process interne</h3>
+          <p data-i18n="svc_process_desc">Cartographie de vos flux, automatisation, choix des bons outils : gagnez en efficacité opérationnelle et réduisez les frictions.</p>
+          <a class="service-link" href="services.html#process" data-i18n="link_more">En savoir plus →</a>
         </article>
 
         <article class="service-card" data-cat="pro part">
           <div class="service-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="4" width="16" height="10" rx="2"/><path d="M2 20h20M9 18l-1 2m8-2l1 2"/></svg></div>
-          <div class="tag-row"><span class="tag tag-pro">Entreprises</span><span class="tag tag-part">Particuliers</span></div>
-          <h3>Acquisition de matériel informatique</h3>
-          <p>Sourcing, achat et configuration de votre parc informatique — postes, périphériques, serveurs.</p>
-          <a class="service-link" href="services.html#materiel">En savoir plus →</a>
+          <div class="tag-row"><span class="tag tag-pro" data-i18n="val_pro">Entreprises</span><span class="tag tag-part" data-i18n="val_part">Particuliers</span></div>
+          <h3 data-i18n="svc_hardware_title">Acquisition de matériel informatique</h3>
+          <p data-i18n="svc_hardware_desc">Sourcing, achat et configuration de votre parc informatique — postes, périphériques, serveurs.</p>
+          <a class="service-link" href="services.html#materiel" data-i18n="link_more">En savoir plus →</a>
         </article>
 
         <article class="service-card" data-cat="part">
           <div class="service-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 18v-6a9 9 0 0118 0v6"/><path d="M21 19a2 2 0 01-2 2h-1v-7h3zM3 19a2 2 0 002 2h1v-7H3z"/></svg></div>
-          <div class="tag-row"><span class="tag tag-part">Particuliers uniquement</span></div>
-          <h3>Support IT soft &amp; hard</h3>
-          <p>Dépannage logiciel et matériel, à domicile ou à distance, pour vos ordinateurs, téléphones et objets connectés.</p>
-          <a class="service-link" href="services.html#support">En savoir plus →</a>
+          <div class="tag-row"><span class="tag tag-part" data-i18n="tag_partOnly">Particuliers uniquement</span></div>
+          <h3 data-i18n="svc_support_title">Support IT soft &amp; hard</h3>
+          <p data-i18n="svc_support_desc">Dépannage logiciel et matériel, à domicile ou à distance, pour vos ordinateurs, téléphones et objets connectés.</p>
+          <a class="service-link" href="services.html#support" data-i18n="link_more">En savoir plus →</a>
         </article>
       </div>
     </div>
@@ -405,30 +412,30 @@
   <section id="process" style="background:var(--bg-soft);">
     <div class="container">
       <div class="section-head">
-        <span class="kicker">Notre méthode</span>
-        <h2>Un processus clair, sans surprise</h2>
-        <p>Quel que soit le service, vous savez toujours où vous en êtes.</p>
+        <span class="kicker" data-i18n="nav_method">Notre méthode</span>
+        <h2 data-i18n="process_h2">Un processus clair, sans surprise</h2>
+        <p data-i18n="process_p">Quel que soit le service, vous savez toujours où vous en êtes.</p>
       </div>
       <div class="process-grid">
         <div class="step">
           <div class="num">1</div>
-          <h3>Échange &amp; audit gratuit</h3>
-          <p>On cerne votre besoin réel, vos contraintes et vos objectifs.</p>
+          <h3 data-i18n="process_step1_title">Échange &amp; audit gratuit</h3>
+          <p data-i18n="process_step1_desc">On cerne votre besoin réel, vos contraintes et vos objectifs.</p>
         </div>
         <div class="step">
           <div class="num">2</div>
-          <h3>Proposition &amp; devis clair</h3>
-          <p>Un périmètre précis, un devis clair, aucun frais caché.</p>
+          <h3 data-i18n="process_step2_title">Proposition &amp; devis clair</h3>
+          <p data-i18n="process_step2_desc">Un périmètre précis, un devis clair, aucun frais caché.</p>
         </div>
         <div class="step">
           <div class="num">3</div>
-          <h3>Réalisation &amp; points d'étape</h3>
-          <p>Vous suivez l'avancement, on ajuste ensemble si besoin.</p>
+          <h3 data-i18n="process_step3_title">Réalisation &amp; points d'étape</h3>
+          <p data-i18n="process_step3_desc">Vous suivez l'avancement, on ajuste ensemble si besoin.</p>
         </div>
         <div class="step">
           <div class="num">4</div>
-          <h3>Livraison &amp; suivi</h3>
-          <p>Formation, documentation et disponibilité après livraison.</p>
+          <h3 data-i18n="process_step4_title">Livraison &amp; suivi</h3>
+          <p data-i18n="process_step4_desc">Formation, documentation et disponibilité après livraison.</p>
         </div>
       </div>
     </div>
@@ -437,10 +444,10 @@
   <!-- STATS -->
   <section class="stats-section">
     <div class="container stats-grid">
-      <div class="stat"><strong>6</strong><span>domaines d'expertise couverts</span></div>
-      <div class="stat"><strong>1</strong><span>interlocuteur unique du début à la fin</span></div>
-      <div class="stat"><strong>24h</strong><span>délai moyen de réponse à un devis</span></div>
-      <div class="stat"><strong>100%</strong><span>devis détaillé avant tout engagement</span></div>
+      <div class="stat"><strong>6</strong><span data-i18n="stats_1_label">domaines d'expertise couverts</span></div>
+      <div class="stat"><strong>1</strong><span data-i18n="stats_2_label">interlocuteur unique du début à la fin</span></div>
+      <div class="stat"><strong>24h</strong><span data-i18n="stats_3_label">délai moyen de réponse à un devis</span></div>
+      <div class="stat"><strong>100%</strong><span data-i18n="stats_4_label">devis détaillé avant tout engagement</span></div>
     </div>
   </section>
 
@@ -448,25 +455,25 @@
   <section id="approche">
     <div class="container">
       <div class="section-head">
-        <span class="kicker">Notre approche</span>
-        <h2>Un devis pensé pour votre projet, jamais un forfait générique</h2>
-        <p>Aucun tarif n'est affiché ici : chaque devis est établi après avoir compris votre besoin réel.</p>
+        <span class="kicker" data-i18n="nav_approach">Notre approche</span>
+        <h2 data-i18n="approach_h2">Un devis pensé pour votre projet, jamais un forfait générique</h2>
+        <p data-i18n="approach_p">Aucun tarif n'est affiché ici : chaque devis est établi après avoir compris votre besoin réel.</p>
       </div>
       <div class="approach-grid">
         <div class="step">
           <div class="num">1</div>
-          <h3>On échange d'abord</h3>
-          <p>Pas de chiffrage sans avoir cerné votre besoin, vos contraintes et vos objectifs.</p>
+          <h3 data-i18n="approach_step1_title">On échange d'abord</h3>
+          <p data-i18n="approach_step1_desc">Pas de chiffrage sans avoir cerné votre besoin, vos contraintes et vos objectifs.</p>
         </div>
         <div class="step">
           <div class="num">2</div>
-          <h3>Devis sur mesure</h3>
-          <p>Une proposition adaptée à la complexité réelle du projet, détaillée et transparente.</p>
+          <h3 data-i18n="approach_step2_title">Devis sur mesure</h3>
+          <p data-i18n="approach_step2_desc">Une proposition adaptée à la complexité réelle du projet, détaillée et transparente.</p>
         </div>
         <div class="step">
           <div class="num">3</div>
-          <h3>Sans engagement</h3>
-          <p>Le premier échange et le devis sont gratuits — vous décidez ensuite librement.</p>
+          <h3 data-i18n="approach_step3_title">Sans engagement</h3>
+          <p data-i18n="approach_step3_desc">Le premier échange et le devis sont gratuits — vous décidez ensuite librement.</p>
         </div>
       </div>
     </div>
@@ -477,10 +484,10 @@
     <div class="container">
       <div class="cta-band">
         <div>
-          <h2>Un projet en tête ?</h2>
-          <p>Parlons-en. Premier échange et devis gratuits, sans engagement.</p>
+          <h2 data-i18n="cta_h2">Un projet en tête ?</h2>
+          <p data-i18n="cta_p">Parlons-en. Premier échange et devis gratuits, sans engagement.</p>
         </div>
-        <a href="#contact" class="btn btn-primary">Demander un devis gratuit</a>
+        <a href="#contact" class="btn btn-primary" data-i18n="hero_ctaPrimary">Demander un devis gratuit</a>
       </div>
     </div>
   </section>
@@ -489,58 +496,58 @@
   <section id="contact" style="background:var(--bg-soft);">
     <div class="container">
       <div class="section-head">
-        <span class="kicker">Contact</span>
-        <h2>Parlons de votre projet</h2>
-        <p>Décrivez votre besoin, nous revenons vers vous sous 24h ouvrées.</p>
+        <span class="kicker" data-i18n="nav_contact">Contact</span>
+        <h2 data-i18n="contact_h2">Parlons de votre projet</h2>
+        <p data-i18n="contact_p">Décrivez votre besoin, nous revenons vers vous sous 24h ouvrées.</p>
       </div>
       <div class="contact-grid">
         <div class="contact-info">
           <div class="item">
             <span class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16v16H4z" opacity="0"/><path d="M22 6l-10 7L2 6"/><rect x="2" y="4" width="20" height="16" rx="2"/></svg></span>
-            <div><strong>Email</strong><span>contact@bmconsulting.example</span></div>
+            <div><strong data-i18n="contact_emailLabel">Email</strong><span>contact@bmconsulting.example</span></div>
           </div>
           <div class="item">
             <span class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.13.96.36 1.9.68 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.91.32 1.85.55 2.81.68A2 2 0 0122 16.92z"/></svg></span>
-            <div><strong>Téléphone</strong><span>+33 (0)0 00 00 00 00</span></div>
+            <div><strong data-i18n="contact_phoneLabel">Téléphone</strong><span>+33 (0)0 00 00 00 00</span></div>
           </div>
           <div class="item">
             <span class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 6-9 12-9 12s-9-6-9-12a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></span>
-            <div><strong>Zone d'intervention</strong><span>À distance ou sur site selon le service</span></div>
+            <div><strong data-i18n="contact_zoneLabel">Zone d'intervention</strong><span data-i18n="contact_zoneValue">À distance ou sur site selon le service</span></div>
           </div>
         </div>
         <form class="contact-form" onsubmit="return false;">
           <div class="form-row">
             <div class="field">
-              <label for="nom">Nom complet</label>
-              <input type="text" id="nom" name="nom" placeholder="Votre nom" required>
+              <label for="nom" data-i18n="form_nameLabel">Nom complet</label>
+              <input type="text" id="nom" name="nom" placeholder="Votre nom" data-i18n-placeholder="form_namePlaceholder" required>
             </div>
             <div class="field">
-              <label for="email">Email</label>
-              <input type="email" id="email" name="email" placeholder="vous@exemple.com" required>
+              <label for="email" data-i18n="contact_emailLabel">Email</label>
+              <input type="email" id="email" name="email" placeholder="vous@exemple.com" data-i18n-placeholder="form_emailPlaceholder" required>
             </div>
           </div>
           <div class="form-row">
             <div class="field full">
-              <label for="service">Service souhaité</label>
+              <label for="service" data-i18n="form_serviceLabel">Service souhaité</label>
               <select id="service" name="service">
-                <option>Conception de site web</option>
-                <option>Conception graphique</option>
-                <option>Stratégie marketing A à Z</option>
-                <option>Optimisation de process interne</option>
-                <option>Acquisition de matériel informatique</option>
-                <option>Support IT (particuliers)</option>
-                <option>Autre / je ne sais pas encore</option>
+                <option data-i18n="card_web">Conception de site web</option>
+                <option data-i18n="svc_graphic_title">Conception graphique</option>
+                <option data-i18n="card_marketing">Stratégie marketing A à Z</option>
+                <option data-i18n="svc_process_title">Optimisation de process interne</option>
+                <option data-i18n="svc_hardware_title">Acquisition de matériel informatique</option>
+                <option data-i18n="form_opt6">Support IT (particuliers)</option>
+                <option data-i18n="form_opt7">Autre / je ne sais pas encore</option>
               </select>
             </div>
           </div>
           <div class="form-row">
             <div class="field full">
-              <label for="message">Votre message</label>
-              <textarea id="message" name="message" placeholder="Décrivez votre besoin en quelques lignes..."></textarea>
+              <label for="message" data-i18n="form_messageLabel">Votre message</label>
+              <textarea id="message" name="message" placeholder="Décrivez votre besoin en quelques lignes..." data-i18n-placeholder="form_messagePlaceholder"></textarea>
             </div>
           </div>
-          <button type="submit" class="btn btn-primary" style="width:100%;">Envoyer ma demande</button>
-          <p class="form-note">Formulaire de démonstration — non connecté. À brancher sur votre outil d'envoi (email, CRM...) avant mise en ligne.</p>
+          <button type="submit" class="btn btn-primary" style="width:100%;" data-i18n="form_submitBtn">Envoyer ma demande</button>
+          <p class="form-note" data-i18n="form_note">Formulaire de démonstration — non connecté. À brancher sur votre outil d'envoi (email, CRM...) avant mise en ligne.</p>
         </form>
       </div>
     </div>
@@ -555,27 +562,27 @@
           <span class="mark">B&M</span>
           <span class="name" style="color:#fff;">B&M <span style="color:var(--accent);">Consulting</span></span>
         </a>
-        <p style="font-size:13.5px; margin-top:14px; max-width:280px;">Solutions web, design, marketing, process &amp; IT — un seul interlocuteur, du particulier à l'entreprise.</p>
+        <p style="font-size:13.5px; margin-top:14px; max-width:280px;" data-i18n="footer_tagline">Solutions web, design, marketing, process &amp; IT — un seul interlocuteur, du particulier à l'entreprise.</p>
       </div>
       <div>
-        <h4>Services</h4>
+        <h4 data-i18n="nav_services">Services</h4>
         <ul>
-          <li><a href="services.html#web">Site web</a></li>
-          <li><a href="services.html#graphisme">Graphisme</a></li>
-          <li><a href="services.html#marketing">Marketing</a></li>
-          <li><a href="services.html#process">Process interne</a></li>
+          <li><a href="services.html#web" data-i18n="footer_link_web">Site web</a></li>
+          <li><a href="services.html#graphisme" data-i18n="footer_link_graphic">Graphisme</a></li>
+          <li><a href="services.html#marketing" data-i18n="footer_link_marketing">Marketing</a></li>
+          <li><a href="services.html#process" data-i18n="footer_link_process">Process interne</a></li>
         </ul>
       </div>
       <div>
-        <h4>Entreprise</h4>
+        <h4 data-i18n="footer_companyHeading">Entreprise</h4>
         <ul>
-          <li><a href="#process">Notre méthode</a></li>
-          <li><a href="#approche">Notre approche</a></li>
-          <li><a href="#contact">Contact</a></li>
+          <li><a href="#process" data-i18n="nav_method">Notre méthode</a></li>
+          <li><a href="#approche" data-i18n="nav_approach">Notre approche</a></li>
+          <li><a href="#contact" data-i18n="nav_contact">Contact</a></li>
         </ul>
       </div>
       <div>
-        <h4>Contact</h4>
+        <h4 data-i18n="nav_contact">Contact</h4>
         <ul>
           <li><a href="mailto:contact@bmconsulting.example">contact@bmconsulting.example</a></li>
           <li><a href="tel:+330000000000">+33 (0)0 00 00 00 00</a></li>
@@ -583,13 +590,164 @@
       </div>
     </div>
     <div class="footer-bottom">
-      <span>© 2026 B&M Consulting. Tous droits réservés.</span>
-      <span>Mockup de conception — contenu à valider</span>
+      <span data-i18n="footer_copyright">© 2026 B&M Consulting. Tous droits réservés.</span>
+      <span data-i18n="footer_mockupNote">Mockup de conception — contenu à valider</span>
     </div>
   </div>
 </footer>
 
 <script>
+  const I18N = {
+    fr: {
+      meta_title: "B&M Consulting — Sites web, design & IT pour particuliers et entreprises",
+      meta_desc: "B&M Consulting accompagne particuliers et entreprises : conception de site web, design graphique, stratégie marketing, optimisation de process et support IT.",
+      skip_link: "Aller au contenu principal",
+      nav_services: "Services", nav_method: "Notre méthode", nav_approach: "Notre approche", nav_contact: "Contact",
+      nav_contactBtn: "Nous contacter", nav_quoteBtn: "Devis gratuit",
+      aria_navPrimary: "Navigation principale", aria_openMenu: "Ouvrir le menu", aria_filterServices: "Filtrer les services",
+      hero_eyebrow: "Un interlocuteur unique, de A à Z",
+      hero_h1: "Votre partenaire digital & IT, de la stratégie à l'exécution.",
+      hero_lead: "Sites web, identité visuelle, marketing, optimisation de vos process et support informatique — pour les particuliers comme pour les entreprises.",
+      hero_ctaPrimary: "Demander un devis gratuit", hero_ctaSecondary: "Voir nos services",
+      card_web: "Conception de site web", card_marketing: "Stratégie marketing A à Z",
+      card_support: "Support IT à domicile", card_process: "Optimisation des process",
+      card_more: "+ Graphisme, matériel IT...",
+      val_pro: "Entreprises", val_part: "Particuliers", val_proPart: "Pro & Particulier", val_more: "Et plus",
+      trust_quote_title: "Devis sous 24h", trust_quote_desc: "Réponse rapide et sans engagement",
+      trust_support_title: "Accompagnement A à Z", trust_support_desc: "De l'audit à la livraison",
+      trust_mix_title: "Pros & particuliers", trust_mix_desc: "Une offre adaptée à chaque profil",
+      trust_custom_title: "100% sur-mesure", trust_custom_desc: "Chaque projet est unique",
+      services_kicker: "Nos expertises", services_h2: "Six domaines, une seule équipe",
+      services_p: "Chaque service peut être mobilisé seul ou combiné selon vos besoins — un seul interlocuteur du début à la fin. Cette liste n'est pas exhaustive : parlons de votre besoin spécifique.",
+      filter_all: "Tous les services",
+      tag_partOnly: "Particuliers uniquement", link_more: "En savoir plus →",
+      svc_web_desc: "Vitrine, e-commerce ou plateforme sur-mesure : un site rapide, sécurisé et pensé pour convertir.",
+      svc_graphic_title: "Conception graphique",
+      svc_graphic_desc: "Logo, charte graphique, supports imprimés et digitaux : une identité visuelle cohérente et mémorable, alignée sur votre positionnement.",
+      svc_marketing_desc: "Audit, positionnement, acquisition, contenu : une stratégie marketing complète, pilotée de bout en bout et mesurée.",
+      svc_process_title: "Optimisation de process interne",
+      svc_process_desc: "Cartographie de vos flux, automatisation, choix des bons outils : gagnez en efficacité opérationnelle et réduisez les frictions.",
+      svc_hardware_title: "Acquisition de matériel informatique",
+      svc_hardware_desc: "Sourcing, achat et configuration de votre parc informatique — postes, périphériques, serveurs.",
+      svc_support_title: "Support IT soft & hard",
+      svc_support_desc: "Dépannage logiciel et matériel, à domicile ou à distance, pour vos ordinateurs, téléphones et objets connectés.",
+      process_h2: "Un processus clair, sans surprise", process_p: "Quel que soit le service, vous savez toujours où vous en êtes.",
+      process_step1_title: "Échange & audit gratuit", process_step1_desc: "On cerne votre besoin réel, vos contraintes et vos objectifs.",
+      process_step2_title: "Proposition & devis clair", process_step2_desc: "Un périmètre précis, un devis clair, aucun frais caché.",
+      process_step3_title: "Réalisation & points d'étape", process_step3_desc: "Vous suivez l'avancement, on ajuste ensemble si besoin.",
+      process_step4_title: "Livraison & suivi", process_step4_desc: "Formation, documentation et disponibilité après livraison.",
+      stats_1_label: "domaines d'expertise couverts", stats_2_label: "interlocuteur unique du début à la fin",
+      stats_3_label: "délai moyen de réponse à un devis", stats_4_label: "devis détaillé avant tout engagement",
+      approach_h2: "Un devis pensé pour votre projet, jamais un forfait générique",
+      approach_p: "Aucun tarif n'est affiché ici : chaque devis est établi après avoir compris votre besoin réel.",
+      approach_step1_title: "On échange d'abord", approach_step1_desc: "Pas de chiffrage sans avoir cerné votre besoin, vos contraintes et vos objectifs.",
+      approach_step2_title: "Devis sur mesure", approach_step2_desc: "Une proposition adaptée à la complexité réelle du projet, détaillée et transparente.",
+      approach_step3_title: "Sans engagement", approach_step3_desc: "Le premier échange et le devis sont gratuits — vous décidez ensuite librement.",
+      cta_h2: "Un projet en tête ?", cta_p: "Parlons-en. Premier échange et devis gratuits, sans engagement.",
+      contact_h2: "Parlons de votre projet", contact_p: "Décrivez votre besoin, nous revenons vers vous sous 24h ouvrées.",
+      contact_emailLabel: "Email", contact_phoneLabel: "Téléphone",
+      contact_zoneLabel: "Zone d'intervention", contact_zoneValue: "À distance ou sur site selon le service",
+      form_nameLabel: "Nom complet", form_namePlaceholder: "Votre nom",
+      form_emailPlaceholder: "vous@exemple.com", form_serviceLabel: "Service souhaité",
+      form_opt6: "Support IT (particuliers)", form_opt7: "Autre / je ne sais pas encore",
+      form_messageLabel: "Votre message", form_messagePlaceholder: "Décrivez votre besoin en quelques lignes...",
+      form_submitBtn: "Envoyer ma demande",
+      form_note: "Formulaire de démonstration — non connecté. À brancher sur votre outil d'envoi (email, CRM...) avant mise en ligne.",
+      footer_tagline: "Solutions web, design, marketing, process & IT — un seul interlocuteur, du particulier à l'entreprise.",
+      footer_link_web: "Site web", footer_link_graphic: "Graphisme", footer_link_marketing: "Marketing", footer_link_process: "Process interne",
+      footer_companyHeading: "Entreprise",
+      footer_copyright: "© 2026 B&M Consulting. Tous droits réservés.",
+      footer_mockupNote: "Mockup de conception — contenu à valider"
+    },
+    en: {
+      meta_title: "B&M Consulting — Web, design & IT services for individuals and businesses",
+      meta_desc: "B&M Consulting supports individuals and businesses: website design, graphic design, marketing strategy, process optimization and IT support.",
+      skip_link: "Skip to main content",
+      nav_services: "Services", nav_method: "Our process", nav_approach: "Our approach", nav_contact: "Contact",
+      nav_contactBtn: "Contact us", nav_quoteBtn: "Free quote",
+      aria_navPrimary: "Main navigation", aria_openMenu: "Open menu", aria_filterServices: "Filter services",
+      hero_eyebrow: "One point of contact, start to finish",
+      hero_h1: "Your digital & IT partner, from strategy to execution.",
+      hero_lead: "Websites, visual identity, marketing, process optimization and IT support — for individuals and businesses alike.",
+      hero_ctaPrimary: "Request a free quote", hero_ctaSecondary: "View our services",
+      card_web: "Website design", card_marketing: "End-to-end marketing strategy",
+      card_support: "At-home IT support", card_process: "Process optimization",
+      card_more: "+ Graphic design, IT hardware...",
+      val_pro: "Businesses", val_part: "Individuals", val_proPart: "Business & Individual", val_more: "And more",
+      trust_quote_title: "Quote within 24h", trust_quote_desc: "Fast response, no obligation",
+      trust_support_title: "End-to-end support", trust_support_desc: "From audit to delivery",
+      trust_mix_title: "Businesses & individuals", trust_mix_desc: "An offer tailored to every profile",
+      trust_custom_title: "100% tailor-made", trust_custom_desc: "Every project is unique",
+      services_kicker: "Our expertise", services_h2: "Six areas, one team",
+      services_p: "Each service can be used on its own or combined, depending on your needs — one point of contact from start to finish. This list isn't exhaustive: let's talk about your specific need.",
+      filter_all: "All services",
+      tag_partOnly: "Individuals only", link_more: "Learn more →",
+      svc_web_desc: "Showcase site, online store or custom platform: a fast, secure site built to convert.",
+      svc_graphic_title: "Graphic design",
+      svc_graphic_desc: "Logo, brand guidelines, print and digital materials: a consistent, memorable visual identity aligned with your positioning.",
+      svc_marketing_desc: "Audit, positioning, acquisition, content: a complete marketing strategy, managed end-to-end and measured.",
+      svc_process_title: "Internal process optimization",
+      svc_process_desc: "Mapping your workflows, automation, choosing the right tools: gain operational efficiency and reduce friction.",
+      svc_hardware_title: "IT hardware procurement",
+      svc_hardware_desc: "Sourcing, purchasing and setting up your IT equipment — workstations, peripherals, servers.",
+      svc_support_title: "Software & hardware IT support",
+      svc_support_desc: "Software and hardware troubleshooting, at home or remotely, for your computers, phones and connected devices.",
+      process_h2: "A clear process, no surprises", process_p: "Whatever the service, you always know where things stand.",
+      process_step1_title: "Free consultation & audit", process_step1_desc: "We identify your real needs, constraints and goals.",
+      process_step2_title: "Clear proposal & quote", process_step2_desc: "A precise scope, a clear quote, no hidden fees.",
+      process_step3_title: "Delivery & check-ins", process_step3_desc: "You follow progress, and we adjust together if needed.",
+      process_step4_title: "Handover & follow-up", process_step4_desc: "Training, documentation and availability after delivery.",
+      stats_1_label: "areas of expertise covered", stats_2_label: "point of contact from start to finish",
+      stats_3_label: "average response time for a quote", stats_4_label: "detailed quote before any commitment",
+      approach_h2: "A quote built around your project, never a generic package",
+      approach_p: "No pricing is shown here: every quote is built after understanding your actual need.",
+      approach_step1_title: "We talk first", approach_step1_desc: "No pricing without first understanding your needs, constraints and goals.",
+      approach_step2_title: "Custom quote", approach_step2_desc: "A proposal matched to the project's real complexity, detailed and transparent.",
+      approach_step3_title: "No obligation", approach_step3_desc: "The first conversation and the quote are free — you decide freely afterward.",
+      cta_h2: "Have a project in mind?", cta_p: "Let's talk. First conversation and quote are free, no obligation.",
+      contact_h2: "Let's talk about your project", contact_p: "Describe your need, and we'll get back to you within 24 business hours.",
+      contact_emailLabel: "Email", contact_phoneLabel: "Phone",
+      contact_zoneLabel: "Service area", contact_zoneValue: "Remote or on-site depending on the service",
+      form_nameLabel: "Full name", form_namePlaceholder: "Your name",
+      form_emailPlaceholder: "you@example.com", form_serviceLabel: "Service needed",
+      form_opt6: "IT support (individuals)", form_opt7: "Other / not sure yet",
+      form_messageLabel: "Your message", form_messagePlaceholder: "Describe your need in a few lines...",
+      form_submitBtn: "Send my request",
+      form_note: "Demo form — not connected. Wire it up to your sending tool (email, CRM...) before going live.",
+      footer_tagline: "Web, design, marketing, process & IT solutions — one point of contact, from individuals to businesses.",
+      footer_link_web: "Website", footer_link_graphic: "Graphic design", footer_link_marketing: "Marketing", footer_link_process: "Internal process",
+      footer_companyHeading: "Company",
+      footer_copyright: "© 2026 B&M Consulting. All rights reserved.",
+      footer_mockupNote: "Design mockup — content to be validated"
+    }
+  };
+
+  function applyLang(lang){
+    document.documentElement.lang = lang;
+    const dict = I18N[lang];
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+      const key = el.dataset.i18n;
+      if (dict[key] !== undefined) el.textContent = dict[key];
+    });
+    document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+      const key = el.dataset.i18nPlaceholder;
+      if (dict[key] !== undefined) el.placeholder = dict[key];
+    });
+    document.querySelectorAll('[data-i18n-aria]').forEach(el => {
+      const key = el.dataset.i18nAria;
+      if (dict[key] !== undefined) el.setAttribute('aria-label', dict[key]);
+    });
+    document.getElementById('pageTitle').textContent = dict.meta_title;
+    document.getElementById('pageDesc').setAttribute('content', dict.meta_desc);
+    document.querySelectorAll('.lang-btn').forEach(btn => {
+      btn.setAttribute('aria-pressed', String(btn.dataset.lang === lang));
+    });
+  }
+
+  document.querySelectorAll('.lang-btn').forEach(btn => {
+    btn.addEventListener('click', () => applyLang(btn.dataset.lang));
+  });
+
   // Mobile menu toggle
   const toggle = document.getElementById('menuToggle');
   const navList = document.querySelector('nav.primary ul');

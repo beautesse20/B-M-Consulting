@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Nos Prestations — B&M Consulting</title>
-<meta name="description" content="Prestations B&M Consulting : conception de site web, design graphique, stratégie marketing, optimisation de process, matériel informatique et support IT.">
+<title id="pageTitle">Nos Prestations — B&M Consulting</title>
+<meta id="pageDesc" name="description" content="Prestations B&M Consulting : conception de site web, design graphique, stratégie marketing, optimisation de process, matériel informatique et support IT.">
 <style>
   :root{
     --navy:#0B2447; --navy-dark:#071A33; --navy-light:#12395F;
@@ -36,6 +36,9 @@
   .btn-outline{background:transparent; color:var(--navy); border-color:var(--border);}
   .btn-outline:hover{border-color:var(--navy);}
   .menu-toggle{display:none; background:none; border:1px solid var(--border); border-radius:8px; padding:8px; cursor:pointer;}
+  .lang-switch{display:flex; border:1px solid var(--border); border-radius:999px; padding:3px; gap:2px; flex-shrink:0;}
+  .lang-btn{border:none; background:transparent; padding:6px 11px; border-radius:999px; font-size:12.5px; font-weight:800; color:var(--text-muted); cursor:pointer; letter-spacing:.02em;}
+  .lang-btn[aria-pressed="true"]{background:var(--navy); color:#fff;}
 
   .page-hero{background:linear-gradient(120deg,var(--navy),var(--navy-dark)); color:#fff; padding:64px 0;}
   .page-hero .kicker{color:#8FD9C4; font-weight:800; font-size:13px; letter-spacing:.06em; text-transform:uppercase;}
@@ -95,7 +98,7 @@
 </style>
 </head>
 <body>
-<a class="skip-link" href="#main">Aller au contenu principal</a>
+<a class="skip-link" href="#main" data-i18n="skip_link">Aller au contenu principal</a>
 
 <header>
   <div class="container nav-wrap">
@@ -103,37 +106,41 @@
       <span class="mark">B&M</span>
       <span class="name">B&M <span>Consulting</span></span>
     </a>
-    <nav class="primary" aria-label="Navigation principale">
+    <nav class="primary" aria-label="Navigation principale" data-i18n-aria="aria_navPrimary">
       <ul>
-        <li><a href="index.html#services">Accueil</a></li>
-        <li><a href="index.html#process">Notre méthode</a></li>
-        <li><a href="services.html">Nos prestations</a></li>
-        <li><a href="index.html#contact">Contact</a></li>
+        <li><a href="index.html#services" data-i18n="nav_home">Accueil</a></li>
+        <li><a href="index.html#process" data-i18n="nav_method">Notre méthode</a></li>
+        <li><a href="services.html" data-i18n="nav_services">Nos prestations</a></li>
+        <li><a href="index.html#contact" data-i18n="nav_contact">Contact</a></li>
       </ul>
     </nav>
     <div style="display:flex; align-items:center; gap:12px;">
-      <a href="index.html#contact" class="btn btn-primary">Devis gratuit</a>
-      <button class="menu-toggle" aria-label="Ouvrir le menu"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button>
+      <div class="lang-switch" role="group" aria-label="Langue / Language">
+        <button class="lang-btn" data-lang="fr" aria-pressed="true">FR</button>
+        <button class="lang-btn" data-lang="en" aria-pressed="false">EN</button>
+      </div>
+      <a href="index.html#contact" class="btn btn-primary" data-i18n="nav_quoteBtn">Devis gratuit</a>
+      <button class="menu-toggle" aria-label="Ouvrir le menu" data-i18n-aria="aria_openMenu"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button>
     </div>
   </div>
 </header>
 
 <div class="page-hero">
   <div class="container">
-    <span class="kicker">Nos prestations</span>
-    <h1>Le détail de nos domaines d'intervention</h1>
-    <p>Six domaines d'expertise, mobilisables séparément ou combinés selon votre projet. Cette liste n'est pas exhaustive — parlons de votre besoin spécifique.</p>
+    <span class="kicker" data-i18n="page_kicker">Nos prestations</span>
+    <h1 data-i18n="page_h1">Le détail de nos domaines d'intervention</h1>
+    <p data-i18n="page_p">Six domaines d'expertise, mobilisables séparément ou combinés selon votre projet. Cette liste n'est pas exhaustive — parlons de votre besoin spécifique.</p>
   </div>
 </div>
 
-<nav class="subnav" aria-label="Sommaire des services">
+<nav class="subnav" aria-label="Sommaire des services" data-i18n-aria="aria_subnav">
   <div class="container subnav-inner">
-    <a href="#web">Site web</a>
-    <a href="#graphisme">Graphisme</a>
-    <a href="#marketing">Marketing</a>
-    <a href="#process">Process interne</a>
-    <a href="#materiel">Matériel informatique</a>
-    <a href="#support">Support IT</a>
+    <a href="#web" data-i18n="subnav_web">Site web</a>
+    <a href="#graphisme" data-i18n="subnav_graphic">Graphisme</a>
+    <a href="#marketing" data-i18n="subnav_marketing">Marketing</a>
+    <a href="#process" data-i18n="subnav_process">Process interne</a>
+    <a href="#materiel" data-i18n="subnav_hardware">Matériel informatique</a>
+    <a href="#support" data-i18n="subnav_support">Support IT</a>
   </div>
 </nav>
 
@@ -145,48 +152,48 @@
       <div class="svc-head">
         <div class="svc-icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 010 18M12 3a14 14 0 000 18"/></svg></div>
         <div>
-          <span class="tag tag-pro">Entreprises</span><span class="tag tag-part">Particuliers</span>
-          <h2>Conception de site web</h2>
-          <p>Un site rapide, sécurisé, responsive et pensé pour convertir.</p>
+          <span class="tag tag-pro" data-i18n="val_pro">Entreprises</span><span class="tag tag-part" data-i18n="val_part">Particuliers</span>
+          <h2 data-i18n="svc_web_title">Conception de site web</h2>
+          <p data-i18n="svc_web_desc">Un site rapide, sécurisé, responsive et pensé pour convertir.</p>
         </div>
       </div>
       <ul class="includes">
-        <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Design responsive sur-mesure (mobile, tablette, desktop)</li>
-        <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Hébergement &amp; nom de domaine (mise en place)</li>
-        <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Optimisation vitesse &amp; référencement (SEO technique)</li>
-        <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Formation à la prise en main</li>
+        <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> <span data-i18n="web_incl1">Design responsive sur-mesure (mobile, tablette, desktop)</span></li>
+        <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> <span data-i18n="web_incl2">Hébergement &amp; nom de domaine (mise en place)</span></li>
+        <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> <span data-i18n="web_incl3">Optimisation vitesse &amp; référencement (SEO technique)</span></li>
+        <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> <span data-i18n="web_incl4">Formation à la prise en main</span></li>
       </ul>
       <div class="pricing-grid">
         <div class="price-card">
-          <span class="tag tag-pro">Vitrine</span>
-          <h3>Site vitrine</h3>
+          <span class="tag tag-pro" data-i18n="web_showcase_tag">Vitrine</span>
+          <h3 data-i18n="web_showcase_title">Site vitrine</h3>
           <ul>
-            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Jusqu'à 5 pages</li>
-            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Formulaire de contact</li>
-            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> SEO de base + Google Business</li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> <span data-i18n="web_showcase_1">Jusqu'à 5 pages</span></li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> <span data-i18n="web_showcase_2">Formulaire de contact</span></li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> <span data-i18n="web_showcase_3">SEO de base + Google Business</span></li>
           </ul>
-          <a href="index.html#contact" class="btn btn-outline">Demander un devis</a>
+          <a href="index.html#contact" class="btn btn-outline" data-i18n="btn_quote">Demander un devis</a>
         </div>
         <div class="price-card featured">
-          <span class="badge-pop">Le plus demandé</span>
-          <span class="tag tag-pro">E-commerce</span>
-          <h3>Boutique en ligne</h3>
+          <span class="badge-pop" data-i18n="web_ecom_badge">Le plus demandé</span>
+          <span class="tag tag-pro" data-i18n="web_ecom_tag">E-commerce</span>
+          <h3 data-i18n="web_ecom_title">Boutique en ligne</h3>
           <ul>
-            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Catalogue produits illimité</li>
-            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Paiement en ligne sécurisé</li>
-            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Gestion stocks &amp; commandes</li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> <span data-i18n="web_ecom_1">Catalogue produits illimité</span></li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> <span data-i18n="web_ecom_2">Paiement en ligne sécurisé</span></li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> <span data-i18n="web_ecom_3">Gestion stocks &amp; commandes</span></li>
           </ul>
-          <a href="index.html#contact" class="btn btn-primary">Demander un devis</a>
+          <a href="index.html#contact" class="btn btn-primary" data-i18n="btn_quote">Demander un devis</a>
         </div>
         <div class="price-card">
-          <span class="tag tag-pro">Sur-mesure</span>
-          <h3>Plateforme / application</h3>
+          <span class="tag tag-pro" data-i18n="web_custom_tag">Sur-mesure</span>
+          <h3 data-i18n="web_custom_title">Plateforme / application</h3>
           <ul>
-            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Fonctionnalités spécifiques &amp; intégrations</li>
-            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Architecture évolutive (SaaS, back-office...)</li>
-            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Accompagnement long terme possible</li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> <span data-i18n="web_custom_1">Fonctionnalités spécifiques &amp; intégrations</span></li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> <span data-i18n="web_custom_2">Architecture évolutive (SaaS, back-office...)</span></li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> <span data-i18n="web_custom_3">Accompagnement long terme possible</span></li>
           </ul>
-          <a href="index.html#contact" class="btn btn-outline">Demander un devis</a>
+          <a href="index.html#contact" class="btn btn-outline" data-i18n="btn_quote">Demander un devis</a>
         </div>
       </div>
     </div>
@@ -198,39 +205,39 @@
       <div class="svc-head">
         <div class="svc-icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="13.5" cy="6.5" r="3.5"/><circle cx="17.5" cy="17.5" r="3.5"/><circle cx="6" cy="14" r="3"/></svg></div>
         <div>
-          <span class="tag tag-pro">Entreprises</span><span class="tag tag-part">Particuliers</span>
-          <h2>Conception graphique</h2>
-          <p>Une identité visuelle cohérente, du logo aux supports print et digitaux.</p>
+          <span class="tag tag-pro" data-i18n="val_pro">Entreprises</span><span class="tag tag-part" data-i18n="val_part">Particuliers</span>
+          <h2 data-i18n="graphic_title">Conception graphique</h2>
+          <p data-i18n="graphic_desc">Une identité visuelle cohérente, du logo aux supports print et digitaux.</p>
         </div>
       </div>
       <div class="pricing-grid">
         <div class="price-card">
-          <h3>Logo seul</h3>
+          <h3 data-i18n="graphic_logo_title">Logo seul</h3>
           <ul>
-            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Plusieurs propositions de logo</li>
-            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Séries de retouches incluses</li>
-            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Fichiers sources livrés</li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> <span data-i18n="graphic_logo_1">Plusieurs propositions de logo</span></li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> <span data-i18n="graphic_logo_2">Séries de retouches incluses</span></li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> <span data-i18n="graphic_logo_3">Fichiers sources livrés</span></li>
           </ul>
-          <a href="index.html#contact" class="btn btn-outline">Demander un devis</a>
+          <a href="index.html#contact" class="btn btn-outline" data-i18n="btn_quote">Demander un devis</a>
         </div>
         <div class="price-card featured">
-          <span class="badge-pop">Recommandé</span>
-          <h3>Identité complète</h3>
+          <span class="badge-pop" data-i18n="graphic_identity_badge">Recommandé</span>
+          <h3 data-i18n="graphic_identity_title">Identité complète</h3>
           <ul>
-            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Logo + charte graphique</li>
-            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Palette, typographies, gabarits</li>
-            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Déclinaisons réseaux sociaux</li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> <span data-i18n="graphic_identity_1">Logo + charte graphique</span></li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> <span data-i18n="graphic_identity_2">Palette, typographies, gabarits</span></li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> <span data-i18n="graphic_identity_3">Déclinaisons réseaux sociaux</span></li>
           </ul>
-          <a href="index.html#contact" class="btn btn-primary">Demander un devis</a>
+          <a href="index.html#contact" class="btn btn-primary" data-i18n="btn_quote">Demander un devis</a>
         </div>
         <div class="price-card">
-          <h3>Supports print &amp; digital</h3>
+          <h3 data-i18n="graphic_print_title">Supports print &amp; digital</h3>
           <ul>
-            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Flyers, cartes de visite, brochures</li>
-            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Visuels réseaux sociaux</li>
-            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Adapté au volume &amp; aux formats souhaités</li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> <span data-i18n="graphic_print_1">Flyers, cartes de visite, brochures</span></li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> <span data-i18n="graphic_print_2">Visuels réseaux sociaux</span></li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> <span data-i18n="graphic_print_3">Adapté au volume &amp; aux formats souhaités</span></li>
           </ul>
-          <a href="index.html#contact" class="btn btn-outline">Demander un devis</a>
+          <a href="index.html#contact" class="btn btn-outline" data-i18n="btn_quote">Demander un devis</a>
         </div>
       </div>
     </div>
@@ -242,29 +249,29 @@
       <div class="svc-head">
         <div class="svc-icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 17l6-6 4 4 8-8"/><path d="M21 3h-6v6"/></svg></div>
         <div>
-          <span class="tag tag-pro">Entreprises</span>
-          <h2>Stratégie marketing A à Z</h2>
-          <p>De l'audit à l'acquisition : une stratégie pilotée et mesurée, adaptée à votre marché.</p>
+          <span class="tag tag-pro" data-i18n="val_pro">Entreprises</span>
+          <h2 data-i18n="marketing_title">Stratégie marketing A à Z</h2>
+          <p data-i18n="marketing_desc">De l'audit à l'acquisition : une stratégie pilotée et mesurée, adaptée à votre marché.</p>
         </div>
       </div>
       <div class="pricing-grid two">
         <div class="price-card">
-          <h3>Audit &amp; positionnement</h3>
+          <h3 data-i18n="marketing_audit_title">Audit &amp; positionnement</h3>
           <ul>
-            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Analyse marché &amp; concurrence</li>
-            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Recommandations priorisées</li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> <span data-i18n="marketing_audit_1">Analyse marché &amp; concurrence</span></li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> <span data-i18n="marketing_audit_2">Recommandations priorisées</span></li>
           </ul>
-          <a href="index.html#contact" class="btn btn-outline">Demander un devis</a>
+          <a href="index.html#contact" class="btn btn-outline" data-i18n="btn_quote">Demander un devis</a>
         </div>
         <div class="price-card featured">
-          <span class="badge-pop">Accompagnement continu</span>
-          <h3>Stratégie complète + suivi mensuel</h3>
+          <span class="badge-pop" data-i18n="marketing_full_badge">Accompagnement continu</span>
+          <h3 data-i18n="marketing_full_title">Stratégie complète + suivi mensuel</h3>
           <ul>
-            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Plan d'acquisition &amp; contenu</li>
-            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Pilotage &amp; reporting mensuel</li>
-            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Abonnement mensuel possible</li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> <span data-i18n="marketing_full_1">Plan d'acquisition &amp; contenu</span></li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> <span data-i18n="marketing_full_2">Pilotage &amp; reporting mensuel</span></li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> <span data-i18n="marketing_full_3">Abonnement mensuel possible</span></li>
           </ul>
-          <a href="index.html#contact" class="btn btn-primary">Demander un devis</a>
+          <a href="index.html#contact" class="btn btn-primary" data-i18n="btn_quote">Demander un devis</a>
         </div>
       </div>
     </div>
@@ -276,28 +283,28 @@
       <div class="svc-head">
         <div class="svc-icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 00.34 1.87l.06.06a2 2 0 11-2.83 2.83l-.06-.06a1.7 1.7 0 00-1.87-.34 1.7 1.7 0 00-1 1.55V21a2 2 0 11-4 0v-.09a1.7 1.7 0 00-1-1.55 1.7 1.7 0 00-1.87.34l-.06.06a2 2 0 11-2.83-2.83l.06-.06a1.7 1.7 0 00.34-1.87 1.7 1.7 0 00-1.55-1H3a2 2 0 110-4h.09a1.7 1.7 0 001.55-1 1.7 1.7 0 00-.34-1.87l-.06-.06a2 2 0 112.83-2.83l.06.06a1.7 1.7 0 001.87.34H9a1.7 1.7 0 001-1.55V3a2 2 0 114 0v.09a1.7 1.7 0 001 1.55 1.7 1.7 0 001.87-.34l.06-.06a2 2 0 112.83 2.83l-.06.06a1.7 1.7 0 00-.34 1.87V9a1.7 1.7 0 001.55 1H21a2 2 0 110 4h-.09a1.7 1.7 0 00-1.55 1z"/></svg></div>
         <div>
-          <span class="tag tag-pro">Entreprises</span>
-          <h2>Optimisation de process interne</h2>
-          <p>Cartographie de vos flux, automatisation, choix des bons outils.</p>
+          <span class="tag tag-pro" data-i18n="val_pro">Entreprises</span>
+          <h2 data-i18n="process_title">Optimisation de process interne</h2>
+          <p data-i18n="process_desc">Cartographie de vos flux, automatisation, choix des bons outils.</p>
         </div>
       </div>
       <div class="pricing-grid two">
         <div class="price-card">
-          <h3>Audit de process</h3>
+          <h3 data-i18n="process_audit_title">Audit de process</h3>
           <ul>
-            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Cartographie des flux existants</li>
-            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Rapport de recommandations</li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> <span data-i18n="process_audit_1">Cartographie des flux existants</span></li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> <span data-i18n="process_audit_2">Rapport de recommandations</span></li>
           </ul>
-          <a href="index.html#contact" class="btn btn-outline">Demander un devis</a>
+          <a href="index.html#contact" class="btn btn-outline" data-i18n="btn_quote">Demander un devis</a>
         </div>
         <div class="price-card featured">
-          <span class="badge-pop">Le plus complet</span>
-          <h3>Mise en œuvre &amp; automatisation</h3>
+          <span class="badge-pop" data-i18n="process_full_badge">Le plus complet</span>
+          <h3 data-i18n="process_full_title">Mise en œuvre &amp; automatisation</h3>
           <ul>
-            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Déploiement d'outils &amp; automatisations</li>
-            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Formation des équipes</li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> <span data-i18n="process_full_1">Déploiement d'outils &amp; automatisations</span></li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> <span data-i18n="process_full_2">Formation des équipes</span></li>
           </ul>
-          <a href="index.html#contact" class="btn btn-primary">Demander un devis</a>
+          <a href="index.html#contact" class="btn btn-primary" data-i18n="btn_quote">Demander un devis</a>
         </div>
       </div>
     </div>
@@ -309,28 +316,28 @@
       <div class="svc-head">
         <div class="svc-icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="4" width="16" height="10" rx="2"/><path d="M2 20h20M9 18l-1 2m8-2l1 2"/></svg></div>
         <div>
-          <span class="tag tag-pro">Entreprises</span><span class="tag tag-part">Particuliers</span>
-          <h2>Acquisition de matériel informatique</h2>
-          <p>Sourcing, achat et configuration de votre parc — postes, périphériques, serveurs.</p>
+          <span class="tag tag-pro" data-i18n="val_pro">Entreprises</span><span class="tag tag-part" data-i18n="val_part">Particuliers</span>
+          <h2 data-i18n="hardware_title">Acquisition de matériel informatique</h2>
+          <p data-i18n="hardware_desc">Sourcing, achat et configuration de votre parc — postes, périphériques, serveurs.</p>
         </div>
       </div>
       <div class="pricing-grid two">
         <div class="price-card">
-          <h3>Sourcing &amp; conseil</h3>
+          <h3 data-i18n="hardware_sourcing_title">Sourcing &amp; conseil</h3>
           <ul>
-            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Sélection adaptée au besoin &amp; budget</li>
-            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Comparatif fournisseurs</li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> <span data-i18n="hardware_sourcing_1">Sélection adaptée au besoin &amp; budget</span></li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> <span data-i18n="hardware_sourcing_2">Comparatif fournisseurs</span></li>
           </ul>
-          <a href="index.html#contact" class="btn btn-outline">Demander un devis</a>
+          <a href="index.html#contact" class="btn btn-outline" data-i18n="btn_quote">Demander un devis</a>
         </div>
         <div class="price-card featured">
-          <span class="badge-pop">Clé en main</span>
-          <h3>Achat, livraison &amp; configuration</h3>
+          <span class="badge-pop" data-i18n="hardware_full_badge">Clé en main</span>
+          <h3 data-i18n="hardware_full_title">Achat, livraison &amp; configuration</h3>
           <ul>
-            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Achat groupé pour parcs multi-postes</li>
-            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Configuration &amp; mise en service</li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> <span data-i18n="hardware_full_1">Achat groupé pour parcs multi-postes</span></li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> <span data-i18n="hardware_full_2">Configuration &amp; mise en service</span></li>
           </ul>
-          <a href="index.html#contact" class="btn btn-primary">Demander un devis</a>
+          <a href="index.html#contact" class="btn btn-primary" data-i18n="btn_quote">Demander un devis</a>
         </div>
       </div>
     </div>
@@ -342,36 +349,36 @@
       <div class="svc-head">
         <div class="svc-icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 18v-6a9 9 0 0118 0v6"/><path d="M21 19a2 2 0 01-2 2h-1v-7h3zM3 19a2 2 0 002 2h1v-7H3z"/></svg></div>
         <div>
-          <span class="tag tag-part">Particuliers uniquement</span>
-          <h2>Support IT soft &amp; hard</h2>
-          <p>Dépannage logiciel et matériel, à domicile ou à distance, pour tous vos appareils.</p>
+          <span class="tag tag-part" data-i18n="tag_partOnly">Particuliers uniquement</span>
+          <h2 data-i18n="support_title">Support IT soft &amp; hard</h2>
+          <p data-i18n="support_desc">Dépannage logiciel et matériel, à domicile ou à distance, pour tous vos appareils.</p>
         </div>
       </div>
       <div class="pricing-grid">
         <div class="price-card">
-          <h3>Diagnostic</h3>
+          <h3 data-i18n="support_diag_title">Diagnostic</h3>
           <ul>
-            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Identification du problème</li>
-            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Devis avant toute intervention</li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> <span data-i18n="support_diag_1">Identification du problème</span></li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> <span data-i18n="support_diag_2">Devis avant toute intervention</span></li>
           </ul>
-          <a href="index.html#contact" class="btn btn-outline">Demander un devis</a>
+          <a href="index.html#contact" class="btn btn-outline" data-i18n="btn_quote">Demander un devis</a>
         </div>
         <div class="price-card featured">
-          <span class="badge-pop">Le plus demandé</span>
-          <h3>Intervention à distance</h3>
+          <span class="badge-pop" data-i18n="support_remote_badge">Le plus demandé</span>
+          <h3 data-i18n="support_remote_title">Intervention à distance</h3>
           <ul>
-            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Dépannage logiciel, virus, mises à jour</li>
-            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Rapide, sans déplacement</li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> <span data-i18n="support_remote_1">Dépannage logiciel, virus, mises à jour</span></li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> <span data-i18n="support_remote_2">Rapide, sans déplacement</span></li>
           </ul>
-          <a href="index.html#contact" class="btn btn-primary">Demander un devis</a>
+          <a href="index.html#contact" class="btn btn-primary" data-i18n="btn_quote">Demander un devis</a>
         </div>
         <div class="price-card">
-          <h3>Intervention à domicile</h3>
+          <h3 data-i18n="support_home_title">Intervention à domicile</h3>
           <ul>
-            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Panne matérielle, installation, réseau</li>
-            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Zone de déplacement à définir</li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> <span data-i18n="support_home_1">Panne matérielle, installation, réseau</span></li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> <span data-i18n="support_home_2">Zone de déplacement à définir</span></li>
           </ul>
-          <a href="index.html#contact" class="btn btn-outline">Demander un devis</a>
+          <a href="index.html#contact" class="btn btn-outline" data-i18n="btn_quote">Demander un devis</a>
         </div>
       </div>
     </div>
@@ -379,21 +386,144 @@
 
   <div class="cta-band">
     <div>
-      <h2>Pas sûr du service qu'il vous faut ?</h2>
-      <p>Décrivez votre besoin, on vous oriente gratuitement vers la bonne solution.</p>
+      <h2 data-i18n="cta_h2">Pas sûr du service qu'il vous faut ?</h2>
+      <p data-i18n="cta_p">Décrivez votre besoin, on vous oriente gratuitement vers la bonne solution.</p>
     </div>
-    <a href="index.html#contact" class="btn btn-primary">Demander un devis gratuit</a>
+    <a href="index.html#contact" class="btn btn-primary" data-i18n="cta_btn">Demander un devis gratuit</a>
   </div>
 </main>
 
 <footer>
   <div class="container footer-bottom">
-    <span>© 2026 B&M Consulting. Tous droits réservés.</span>
-    <span>Mockup de conception — contenu à valider</span>
+    <span data-i18n="footer_copyright">© 2026 B&M Consulting. Tous droits réservés.</span>
+    <span data-i18n="footer_mockupNote">Mockup de conception — contenu à valider</span>
   </div>
 </footer>
 
 <script>
+  const I18N = {
+    fr: {
+      meta_title: "Nos Prestations — B&M Consulting",
+      meta_desc: "Prestations B&M Consulting : conception de site web, design graphique, stratégie marketing, optimisation de process, matériel informatique et support IT.",
+      skip_link: "Aller au contenu principal",
+      nav_home: "Accueil", nav_method: "Notre méthode", nav_services: "Nos prestations", nav_contact: "Contact", nav_quoteBtn: "Devis gratuit",
+      aria_navPrimary: "Navigation principale", aria_openMenu: "Ouvrir le menu", aria_subnav: "Sommaire des services",
+      page_kicker: "Nos prestations", page_h1: "Le détail de nos domaines d'intervention",
+      page_p: "Six domaines d'expertise, mobilisables séparément ou combinés selon votre projet. Cette liste n'est pas exhaustive — parlons de votre besoin spécifique.",
+      subnav_web: "Site web", subnav_graphic: "Graphisme", subnav_marketing: "Marketing",
+      subnav_process: "Process interne", subnav_hardware: "Matériel informatique", subnav_support: "Support IT",
+      val_pro: "Entreprises", val_part: "Particuliers", tag_partOnly: "Particuliers uniquement", btn_quote: "Demander un devis",
+      svc_web_title: "Conception de site web", svc_web_desc: "Un site rapide, sécurisé, responsive et pensé pour convertir.",
+      web_incl1: "Design responsive sur-mesure (mobile, tablette, desktop)",
+      web_incl2: "Hébergement & nom de domaine (mise en place)",
+      web_incl3: "Optimisation vitesse & référencement (SEO technique)",
+      web_incl4: "Formation à la prise en main",
+      web_showcase_tag: "Vitrine", web_showcase_title: "Site vitrine",
+      web_showcase_1: "Jusqu'à 5 pages", web_showcase_2: "Formulaire de contact", web_showcase_3: "SEO de base + Google Business",
+      web_ecom_badge: "Le plus demandé", web_ecom_tag: "E-commerce", web_ecom_title: "Boutique en ligne",
+      web_ecom_1: "Catalogue produits illimité", web_ecom_2: "Paiement en ligne sécurisé", web_ecom_3: "Gestion stocks & commandes",
+      web_custom_tag: "Sur-mesure", web_custom_title: "Plateforme / application",
+      web_custom_1: "Fonctionnalités spécifiques & intégrations", web_custom_2: "Architecture évolutive (SaaS, back-office...)", web_custom_3: "Accompagnement long terme possible",
+      graphic_title: "Conception graphique", graphic_desc: "Une identité visuelle cohérente, du logo aux supports print et digitaux.",
+      graphic_logo_title: "Logo seul", graphic_logo_1: "Plusieurs propositions de logo", graphic_logo_2: "Séries de retouches incluses", graphic_logo_3: "Fichiers sources livrés",
+      graphic_identity_badge: "Recommandé", graphic_identity_title: "Identité complète",
+      graphic_identity_1: "Logo + charte graphique", graphic_identity_2: "Palette, typographies, gabarits", graphic_identity_3: "Déclinaisons réseaux sociaux",
+      graphic_print_title: "Supports print & digital",
+      graphic_print_1: "Flyers, cartes de visite, brochures", graphic_print_2: "Visuels réseaux sociaux", graphic_print_3: "Adapté au volume & aux formats souhaités",
+      marketing_title: "Stratégie marketing A à Z", marketing_desc: "De l'audit à l'acquisition : une stratégie pilotée et mesurée, adaptée à votre marché.",
+      marketing_audit_title: "Audit & positionnement", marketing_audit_1: "Analyse marché & concurrence", marketing_audit_2: "Recommandations priorisées",
+      marketing_full_badge: "Accompagnement continu", marketing_full_title: "Stratégie complète + suivi mensuel",
+      marketing_full_1: "Plan d'acquisition & contenu", marketing_full_2: "Pilotage & reporting mensuel", marketing_full_3: "Abonnement mensuel possible",
+      process_title: "Optimisation de process interne", process_desc: "Cartographie de vos flux, automatisation, choix des bons outils.",
+      process_audit_title: "Audit de process", process_audit_1: "Cartographie des flux existants", process_audit_2: "Rapport de recommandations",
+      process_full_badge: "Le plus complet", process_full_title: "Mise en œuvre & automatisation",
+      process_full_1: "Déploiement d'outils & automatisations", process_full_2: "Formation des équipes",
+      hardware_title: "Acquisition de matériel informatique", hardware_desc: "Sourcing, achat et configuration de votre parc — postes, périphériques, serveurs.",
+      hardware_sourcing_title: "Sourcing & conseil", hardware_sourcing_1: "Sélection adaptée au besoin & budget", hardware_sourcing_2: "Comparatif fournisseurs",
+      hardware_full_badge: "Clé en main", hardware_full_title: "Achat, livraison & configuration",
+      hardware_full_1: "Achat groupé pour parcs multi-postes", hardware_full_2: "Configuration & mise en service",
+      support_title: "Support IT soft & hard", support_desc: "Dépannage logiciel et matériel, à domicile ou à distance, pour tous vos appareils.",
+      support_diag_title: "Diagnostic", support_diag_1: "Identification du problème", support_diag_2: "Devis avant toute intervention",
+      support_remote_badge: "Le plus demandé", support_remote_title: "Intervention à distance",
+      support_remote_1: "Dépannage logiciel, virus, mises à jour", support_remote_2: "Rapide, sans déplacement",
+      support_home_title: "Intervention à domicile", support_home_1: "Panne matérielle, installation, réseau", support_home_2: "Zone de déplacement à définir",
+      cta_h2: "Pas sûr du service qu'il vous faut ?", cta_p: "Décrivez votre besoin, on vous oriente gratuitement vers la bonne solution.",
+      cta_btn: "Demander un devis gratuit",
+      footer_copyright: "© 2026 B&M Consulting. Tous droits réservés.", footer_mockupNote: "Mockup de conception — contenu à valider"
+    },
+    en: {
+      meta_title: "Our Services — B&M Consulting",
+      meta_desc: "B&M Consulting services: website design, graphic design, marketing strategy, process optimization, IT hardware and IT support.",
+      skip_link: "Skip to main content",
+      nav_home: "Home", nav_method: "Our process", nav_services: "Our services", nav_contact: "Contact", nav_quoteBtn: "Free quote",
+      aria_navPrimary: "Main navigation", aria_openMenu: "Open menu", aria_subnav: "Services summary",
+      page_kicker: "Our services", page_h1: "The details of what we do",
+      page_p: "Six areas of expertise, usable on their own or combined depending on your project. This list isn't exhaustive — let's talk about your specific need.",
+      subnav_web: "Website", subnav_graphic: "Graphic design", subnav_marketing: "Marketing",
+      subnav_process: "Internal process", subnav_hardware: "IT hardware", subnav_support: "IT support",
+      val_pro: "Businesses", val_part: "Individuals", tag_partOnly: "Individuals only", btn_quote: "Request a quote",
+      svc_web_title: "Website design", svc_web_desc: "A fast, secure, responsive site built to convert.",
+      web_incl1: "Custom responsive design (mobile, tablet, desktop)",
+      web_incl2: "Hosting & domain name (setup)",
+      web_incl3: "Speed optimization & technical SEO",
+      web_incl4: "Hands-on training",
+      web_showcase_tag: "Showcase", web_showcase_title: "Showcase website",
+      web_showcase_1: "Up to 5 pages", web_showcase_2: "Contact form", web_showcase_3: "Basic SEO + Google Business",
+      web_ecom_badge: "Most requested", web_ecom_tag: "E-commerce", web_ecom_title: "Online store",
+      web_ecom_1: "Unlimited product catalog", web_ecom_2: "Secure online payment", web_ecom_3: "Stock & order management",
+      web_custom_tag: "Custom", web_custom_title: "Platform / application",
+      web_custom_1: "Specific features & integrations", web_custom_2: "Scalable architecture (SaaS, back-office...)", web_custom_3: "Long-term support available",
+      graphic_title: "Graphic design", graphic_desc: "A consistent visual identity, from logo to print and digital materials.",
+      graphic_logo_title: "Logo only", graphic_logo_1: "Several logo proposals", graphic_logo_2: "Revision rounds included", graphic_logo_3: "Source files delivered",
+      graphic_identity_badge: "Recommended", graphic_identity_title: "Full identity",
+      graphic_identity_1: "Logo + brand guidelines", graphic_identity_2: "Color palette, typography, templates", graphic_identity_3: "Social media variations",
+      graphic_print_title: "Print & digital materials",
+      graphic_print_1: "Flyers, business cards, brochures", graphic_print_2: "Social media visuals", graphic_print_3: "Adapted to your volume & format needs",
+      marketing_title: "End-to-end marketing strategy", marketing_desc: "From audit to acquisition: a managed, measured strategy suited to your market.",
+      marketing_audit_title: "Audit & positioning", marketing_audit_1: "Market & competitor analysis", marketing_audit_2: "Prioritized recommendations",
+      marketing_full_badge: "Ongoing support", marketing_full_title: "Full strategy + monthly follow-up",
+      marketing_full_1: "Acquisition & content plan", marketing_full_2: "Monthly management & reporting", marketing_full_3: "Monthly subscription available",
+      process_title: "Internal process optimization", process_desc: "Mapping your workflows, automation, choosing the right tools.",
+      process_audit_title: "Process audit", process_audit_1: "Mapping existing workflows", process_audit_2: "Recommendations report",
+      process_full_badge: "Most complete", process_full_title: "Implementation & automation",
+      process_full_1: "Tool deployment & automation", process_full_2: "Team training",
+      hardware_title: "IT hardware procurement", hardware_desc: "Sourcing, purchasing and setting up your equipment — workstations, peripherals, servers.",
+      hardware_sourcing_title: "Sourcing & advice", hardware_sourcing_1: "Selection matched to your needs & budget", hardware_sourcing_2: "Supplier comparison",
+      hardware_full_badge: "Turnkey", hardware_full_title: "Purchase, delivery & setup",
+      hardware_full_1: "Bulk purchasing for multi-device fleets", hardware_full_2: "Setup & deployment",
+      support_title: "Software & hardware IT support", support_desc: "Software and hardware troubleshooting, at home or remotely, for all your devices.",
+      support_diag_title: "Diagnosis", support_diag_1: "Problem identification", support_diag_2: "Quote before any work",
+      support_remote_badge: "Most requested", support_remote_title: "Remote support",
+      support_remote_1: "Software troubleshooting, viruses, updates", support_remote_2: "Fast, no travel needed",
+      support_home_title: "On-site support", support_home_1: "Hardware failure, installation, networking", support_home_2: "Service area to be defined",
+      cta_h2: "Not sure which service you need?", cta_p: "Describe your need, and we'll point you to the right solution for free.",
+      cta_btn: "Request a free quote",
+      footer_copyright: "© 2026 B&M Consulting. All rights reserved.", footer_mockupNote: "Design mockup — content to be validated"
+    }
+  };
+
+  function applyLang(lang){
+    document.documentElement.lang = lang;
+    const dict = I18N[lang];
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+      const key = el.dataset.i18n;
+      if (dict[key] !== undefined) el.textContent = dict[key];
+    });
+    document.querySelectorAll('[data-i18n-aria]').forEach(el => {
+      const key = el.dataset.i18nAria;
+      if (dict[key] !== undefined) el.setAttribute('aria-label', dict[key]);
+    });
+    document.getElementById('pageTitle').textContent = dict.meta_title;
+    document.getElementById('pageDesc').setAttribute('content', dict.meta_desc);
+    document.querySelectorAll('.lang-btn').forEach(btn => {
+      btn.setAttribute('aria-pressed', String(btn.dataset.lang === lang));
+    });
+  }
+
+  document.querySelectorAll('.lang-btn').forEach(btn => {
+    btn.addEventListener('click', () => applyLang(btn.dataset.lang));
+  });
+
   document.querySelector('.menu-toggle').addEventListener('click', () => {
     const nav = document.querySelector('nav.primary');
     nav.style.display = nav.style.display === 'flex' ? 'none' : 'flex';
