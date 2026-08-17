@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>B&M Consulting — Sites web, design & IT pour particuliers et entreprises</title>
+<meta name="description" content="B&M Consulting accompagne particuliers et entreprises : conception de site web, design graphique, stratégie marketing, optimisation de process et support IT.">
+<style>
+  :root{
+    --navy:#0B2447;
+    --navy-dark:#071A33;
+    --navy-light:#12395F;
+    --accent:#1F8A70;
+    --accent-dark:#146B57;
+    --accent-soft:#E4F3EF;
+    --bg:#FFFFFF;
+    --bg-soft:#F4F7FB;
+    --text:#1F2937;
+    --text-muted:#5B6B82;
+    --border:#E3E8F0;
+    --radius:14px;
+    --shadow:0 4px 20px rgba(11,36,71,0.08);
+    --shadow-lg:0 12px 40px rgba(11,36,71,0.14);
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    font-family:'Inter',ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    color:var(--text);
+    background:var(--bg);
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:inherit;}
+  img{max-width:100%;display:block;}
+  .container{max-width:1160px;margin:0 auto;padding:0 24px;}
+  .skip-link{
+    position:absolute; left:-999px; top:auto;
+    background:var(--navy); color:#fff; padding:10px 16px; border-radius:8px; z-index:100;
+  }
+  .skip-link:focus{ left:16px; top:16px; }
+  :focus-visible{ outline:3px solid var(--accent); outline-offset:2px; }
+
+  /* Header */
+  header{
+    position:sticky; top:0; z-index:50;
+    background:rgba(255,255,255,0.92);
+    backdrop-filter:saturate(180%) blur(8px);
+    border-bottom:1px solid var(--border);
+  }
+  .nav-wrap{display:flex; align-items:center; justify-content:space-between; padding:16px 24px;}
+  .logo{display:flex; align-items:center; gap:8px; font-weight:800; font-size:20px; letter-spacing:-0.02em; text-decoration:none;}
+  .logo .mark{
+    display:inline-flex; align-items:center; justify-content:center;
+    width:36px; height:36px; border-radius:9px;
+    background:linear-gradient(135deg,var(--navy),var(--navy-light));
+    color:#fff; font-size:14px; font-weight:800;
+  }
+  .logo .name span{color:var(--accent);}
+  nav.primary{display:flex; align-items:center; gap:32px;}
+  nav.primary ul{list-style:none; display:flex; gap:28px; margin:0; padding:0;}
+  nav.primary a{text-decoration:none; font-weight:600; font-size:15px; color:var(--text-muted); transition:color .15s;}
+  nav.primary a:hover{color:var(--navy);}
+  .btn{
+    display:inline-flex; align-items:center; justify-content:center; gap:8px;
+    padding:12px 22px; border-radius:10px; font-weight:700; font-size:14.5px;
+    text-decoration:none; border:1px solid transparent; cursor:pointer; transition:transform .12s, box-shadow .12s, background .15s;
+  }
+  .btn-primary{background:var(--accent); color:#fff; box-shadow:0 6px 18px rgba(31,138,112,0.35);}
+  .btn-primary:hover{background:var(--accent-dark); transform:translateY(-1px);}
+  .btn-outline{background:transparent; color:var(--navy); border-color:var(--border);}
+  .btn-outline:hover{border-color:var(--navy);}
+  .btn-ghost-white{background:rgba(255,255,255,0.12); color:#fff; border-color:rgba(255,255,255,0.35);}
+  .btn-ghost-white:hover{background:rgba(255,255,255,0.2);}
+  .menu-toggle{display:none; background:none; border:1px solid var(--border); border-radius:8px; padding:8px; cursor:pointer;}
+  .menu-toggle svg{display:block;}
+
+  /* Hero */
+  .hero{
+    background:radial-gradient(1200px 600px at 80% -10%, #163a63 0%, var(--navy) 45%, var(--navy-dark) 100%);
+    color:#fff; padding:88px 0 96px; position:relative; overflow:hidden;
+  }
+  .hero::after{
+    content:""; position:absolute; inset:0;
+    background:radial-gradient(600px 300px at 10% 110%, rgba(31,138,112,0.35), transparent 70%);
+  }
+  .hero-inner{position:relative; display:grid; grid-template-columns:1.1fr 0.9fr; gap:56px; align-items:center;}
+  .eyebrow{
+    display:inline-flex; align-items:center; gap:8px; background:rgba(255,255,255,0.1);
+    border:1px solid rgba(255,255,255,0.18); padding:6px 14px; border-radius:999px; font-size:13px; font-weight:700; letter-spacing:.02em;
+  }
+  .eyebrow .dot{width:7px; height:7px; border-radius:50%; background:var(--accent);}
+  h1{font-size:44px; line-height:1.12; letter-spacing:-0.02em; margin:20px 0 18px; font-weight:800;}
+  .hero p.lead{font-size:18px; color:#CBD8EB; max-width:520px; margin:0 0 32px;}
+  .hero-ctas{display:flex; gap:14px; flex-wrap:wrap;}
+  .hero-visual{
+    background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.14); border-radius:20px;
+    padding:24px; box-shadow:var(--shadow-lg);
+  }
+  .hero-visual .card{background:#fff; border-radius:14px; padding:20px; color:var(--text); box-shadow:var(--shadow-lg);}
+  .mini-row{display:flex; align-items:center; justify-content:space-between; padding:10px 0; border-bottom:1px dashed var(--border);}
+  .mini-row:last-child{border-bottom:none;}
+  .mini-row .label{font-size:13px; color:var(--text-muted); font-weight:600;}
+  .mini-row .val{font-size:13px; font-weight:800; color:var(--navy);}
+  .pill{font-size:12px; font-weight:700; padding:4px 10px; border-radius:999px;}
+  .pill-accent{background:var(--accent-soft); color:var(--accent-dark);}
+
+  /* Trust bar */
+  .trust-bar{background:var(--bg-soft); border-bottom:1px solid var(--border);}
+  .trust-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:24px; padding:28px 0;}
+  .trust-item{display:flex; align-items:center; gap:12px;}
+  .trust-item .ic{
+    width:38px; height:38px; border-radius:10px; background:#fff; border:1px solid var(--border);
+    display:flex; align-items:center; justify-content:center; color:var(--accent); flex-shrink:0;
+  }
+  .trust-item strong{display:block; font-size:14px; color:var(--navy);}
+  .trust-item span{font-size:12.5px; color:var(--text-muted);}
+
+  section{padding:88px 0;}
+  .section-head{max-width:640px; margin:0 auto 48px; text-align:center;}
+  .kicker{color:var(--accent-dark); font-weight:800; font-size:13px; letter-spacing:.06em; text-transform:uppercase;}
+  h2{font-size:32px; letter-spacing:-0.01em; margin:10px 0 12px; color:var(--navy);}
+  .section-head p{color:var(--text-muted); font-size:16px; margin:0;}
+
+  /* Filter pills */
+  .filters{display:flex; justify-content:center; gap:10px; margin-bottom:36px; flex-wrap:wrap;}
+  .filter-btn{
+    border:1px solid var(--border); background:#fff; padding:9px 18px; border-radius:999px;
+    font-weight:700; font-size:13.5px; color:var(--text-muted); cursor:pointer; transition:all .15s;
+  }
+  .filter-btn[aria-pressed="true"]{background:var(--navy); border-color:var(--navy); color:#fff;}
+
+  /* Services grid */
+  .services-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:24px;}
+  .service-card{
+    background:#fff; border:1px solid var(--border); border-radius:var(--radius); padding:28px;
+    transition:transform .15s, box-shadow .15s; display:flex; flex-direction:column;
+  }
+  .service-card:hover{transform:translateY(-4px); box-shadow:var(--shadow-lg);}
+  .service-icon{
+    width:48px; height:48px; border-radius:12px; background:var(--accent-soft); color:var(--accent-dark);
+    display:flex; align-items:center; justify-content:center; margin-bottom:18px;
+  }
+  .service-card h3{font-size:18px; margin:0 0 8px; color:var(--navy);}
+  .service-card p{font-size:14.5px; color:var(--text-muted); margin:0 0 18px; flex-grow:1;}
+  .tag-row{display:flex; gap:8px; margin-bottom:14px; flex-wrap:wrap;}
+  .tag{font-size:11.5px; font-weight:800; padding:4px 10px; border-radius:999px; letter-spacing:.02em;}
+  .tag-pro{background:#EAF0FA; color:var(--navy-light);}
+  .tag-part{background:var(--accent-soft); color:var(--accent-dark);}
+  .service-link{font-size:14px; font-weight:700; color:var(--accent-dark); text-decoration:none; display:inline-flex; align-items:center; gap:6px;}
+  .service-link:hover{text-decoration:underline;}
+
+  /* Process */
+  .process-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:24px; counter-reset:step;}
+  .step{position:relative; padding:28px 20px 20px; background:var(--bg-soft); border-radius:var(--radius); border:1px solid var(--border);}
+  .approach-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:24px;}
+  .step .num{
+    width:34px; height:34px; border-radius:10px; background:var(--navy); color:#fff; font-weight:800;
+    display:flex; align-items:center; justify-content:center; margin-bottom:16px; font-size:14px;
+  }
+  .step h3{font-size:16px; margin:0 0 6px; color:var(--navy);}
+  .step p{font-size:13.5px; color:var(--text-muted); margin:0;}
+
+  /* Stats */
+  .stats-section{background:var(--navy); color:#fff;}
+  .stats-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:24px; text-align:center;}
+  .stat strong{display:block; font-size:34px; font-weight:800; color:#fff;}
+  .stat span{font-size:13.5px; color:#AFC0D9;}
+
+  /* Pricing preview */
+  .pricing-note{
+    text-align:center; font-size:13px; color:var(--text-muted); margin-top:18px;
+  }
+  .pricing-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:24px;}
+  .price-card{
+    border:1px solid var(--border); border-radius:var(--radius); padding:32px 26px; background:#fff; text-align:left;
+    display:flex; flex-direction:column;
+  }
+  .price-card.featured{border-color:var(--accent); box-shadow:var(--shadow-lg); position:relative;}
+  .price-card.featured .badge-pop{
+    position:absolute; top:-13px; left:26px; background:var(--accent); color:#fff; font-size:11.5px;
+    font-weight:800; padding:5px 12px; border-radius:999px;
+  }
+  .price-card h3{font-size:17px; margin:6px 0 4px; color:var(--navy);}
+  .price-card .price{font-size:30px; font-weight:800; color:var(--navy); margin:10px 0 4px;}
+  .price-card .price small{font-size:13px; font-weight:600; color:var(--text-muted);}
+  .price-card ul{list-style:none; padding:0; margin:18px 0 24px; flex-grow:1;}
+  .price-card li{display:flex; gap:10px; align-items:flex-start; font-size:13.8px; color:var(--text-muted); margin-bottom:10px;}
+  .price-card li svg{flex-shrink:0; margin-top:2px; color:var(--accent);}
+
+  /* CTA band */
+  .cta-band{
+    background:linear-gradient(120deg,var(--navy),var(--navy-light));
+    color:#fff; border-radius:24px; padding:56px; display:flex; align-items:center; justify-content:space-between; gap:32px; flex-wrap:wrap;
+  }
+  .cta-band h2{color:#fff; margin:0 0 8px;}
+  .cta-band p{color:#CBD8EB; margin:0; max-width:480px;}
+
+  /* Contact */
+  .contact-grid{display:grid; grid-template-columns:0.9fr 1.1fr; gap:48px; align-items:start;}
+  .contact-info .item{display:flex; gap:14px; margin-bottom:22px;}
+  .contact-info .ic{
+    width:42px; height:42px; border-radius:11px; background:var(--bg-soft); border:1px solid var(--border);
+    display:flex; align-items:center; justify-content:center; color:var(--accent-dark); flex-shrink:0;
+  }
+  .contact-info strong{display:block; font-size:14.5px; color:var(--navy);}
+  .contact-info span{font-size:13.5px; color:var(--text-muted);}
+  form.contact-form{background:var(--bg-soft); border:1px solid var(--border); border-radius:var(--radius); padding:32px;}
+  .form-row{display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-bottom:16px;}
+  .field{display:flex; flex-direction:column; gap:6px;}
+  .field.full{grid-column:1/-1;}
+  label{font-size:13px; font-weight:700; color:var(--navy);}
+  input,select,textarea{
+    padding:11px 13px; border:1px solid var(--border); border-radius:9px; font-size:14px; font-family:inherit; background:#fff;
+  }
+  textarea{resize:vertical; min-height:100px;}
+  .form-note{font-size:12px; color:var(--text-muted); margin-top:10px;}
+
+  footer{background:var(--navy-dark); color:#AFC0D9; padding:56px 0 28px;}
+  .footer-grid{display:grid; grid-template-columns:1.4fr 1fr 1fr 1fr; gap:32px; padding-bottom:36px; border-bottom:1px solid rgba(255,255,255,0.1);}
+  .footer-grid h4{color:#fff; font-size:14px; margin:0 0 16px;}
+  .footer-grid ul{list-style:none; padding:0; margin:0;}
+  .footer-grid li{margin-bottom:10px;}
+  .footer-grid a{color:#AFC0D9; text-decoration:none; font-size:13.5px;}
+  .footer-grid a:hover{color:#fff;}
+  .footer-bottom{display:flex; justify-content:space-between; align-items:center; padding-top:24px; font-size:12.5px; flex-wrap:wrap; gap:12px;}
+
+  @media (max-width:960px){
+    .hero-inner{grid-template-columns:1fr;}
+    .hero-visual{order:-1;}
+    .trust-grid, .process-grid, .services-grid, .pricing-grid, .approach-grid{grid-template-columns:repeat(2,1fr);}
+    .stats-grid{grid-template-columns:repeat(2,1fr); gap:32px;}
+    .contact-grid{grid-template-columns:1fr;}
+    .footer-grid{grid-template-columns:1fr 1fr;}
+  }
+  @media (max-width:720px){
+    nav.primary ul, .btn-outline.nav-cta-desktop{display:none;}
+    .menu-toggle{display:flex;}
+    h1{font-size:32px;}
+    .trust-grid, .process-grid, .services-grid, .pricing-grid, .approach-grid{grid-template-columns:1fr;}
+    .cta-band{padding:32px; flex-direction:column; align-items:flex-start;}
+    .form-row{grid-template-columns:1fr;}
+    .footer-grid{grid-template-columns:1fr;}
+  }
+</style>
+</head>
+<body>
+<a class="skip-link" href="#main">Aller au contenu principal</a>
+
+<header>
+  <div class="container nav-wrap">
+    <a class="logo" href="#top">
+      <span class="mark">B&M</span>
+      <span class="name">B&M <span>Consulting</span></span>
+    </a>
+    <nav class="primary" aria-label="Navigation principale">
+      <ul>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#process">Notre méthode</a></li>
+        <li><a href="#approche">Notre approche</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+    <div style="display:flex; align-items:center; gap:12px;">
+      <a href="#contact" class="btn btn-outline nav-cta-desktop">Nous contacter</a>
+      <a href="#contact" class="btn btn-primary">Devis gratuit</a>
+      <button class="menu-toggle" aria-label="Ouvrir le menu" aria-expanded="false" id="menuToggle">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+  <!-- HERO -->
+  <section class="hero" style="padding-top:88px;">
+    <div class="container hero-inner">
+      <div>
+        <span class="eyebrow"><span class="dot"></span> Un interlocuteur unique, de A à Z</span>
+        <h1>Votre partenaire digital &amp; IT, de la stratégie à l'exécution.</h1>
+        <p class="lead">Sites web, identité visuelle, marketing, optimisation de vos process et support informatique — pour les particuliers comme pour les entreprises.</p>
+        <div class="hero-ctas">
+          <a href="#contact" class="btn btn-primary">Demander un devis gratuit</a>
+          <a href="#services" class="btn btn-ghost-white">Voir nos services</a>
+        </div>
+      </div>
+      <div class="hero-visual" aria-hidden="true">
+        <div class="card">
+          <div class="mini-row">
+            <span class="label">Conception de site web</span>
+            <span class="pill pill-accent">Pro &amp; Particulier</span>
+          </div>
+          <div class="mini-row">
+            <span class="label">Stratégie marketing A à Z</span>
+            <span class="val">Entreprises</span>
+          </div>
+          <div class="mini-row">
+            <span class="label">Support IT à domicile</span>
+            <span class="val">Particuliers</span>
+          </div>
+          <div class="mini-row">
+            <span class="label">Optimisation des process</span>
+            <span class="val">Entreprises</span>
+          </div>
+          <div class="mini-row">
+            <span class="label">+ Graphisme, matériel IT...</span>
+            <span class="pill pill-accent">Et plus</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TRUST BAR -->
+  <div class="trust-bar">
+    <div class="container trust-grid">
+      <div class="trust-item">
+        <span class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg></span>
+        <div><strong>Devis sous 24h</strong><span>Réponse rapide et sans engagement</span></div>
+      </div>
+      <div class="trust-item">
+        <span class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3l7 4v5c0 4.5-3 8-7 9-4-1-7-4.5-7-9V7l7-4z"/></svg></span>
+        <div><strong>Accompagnement A à Z</strong><span>De l'audit à la livraison</span></div>
+      </div>
+      <div class="trust-item">
+        <span class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg></span>
+        <div><strong>Pros &amp; particuliers</strong><span>Une offre adaptée à chaque profil</span></div>
+      </div>
+      <div class="trust-item">
+        <span class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l3 7h7l-5.5 4.5L18.5 21 12 16.8 5.5 21l2-7.5L2 9h7z"/></svg></span>
+        <div><strong>100% sur-mesure</strong><span>Chaque projet est unique</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SERVICES -->
+  <section id="services">
+    <div class="container">
+      <div class="section-head">
+        <span class="kicker">Nos expertises</span>
+        <h2>Six domaines, une seule équipe</h2>
+        <p>Chaque service peut être mobilisé seul ou combiné selon vos besoins — un seul interlocuteur du début à la fin. Cette liste n'est pas exhaustive : parlons de votre besoin spécifique.</p>
+      </div>
+
+      <div class="filters" role="group" aria-label="Filtrer les services">
+        <button class="filter-btn" data-filter="all" aria-pressed="true">Tous les services</button>
+        <button class="filter-btn" data-filter="pro" aria-pressed="false">Entreprises</button>
+        <button class="filter-btn" data-filter="part" aria-pressed="false">Particuliers</button>
+      </div>
+
+      <div class="services-grid" id="servicesGrid">
+        <article class="service-card" data-cat="pro part">
+          <div class="service-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 010 18M12 3a14 14 0 000 18"/></svg></div>
+          <div class="tag-row"><span class="tag tag-pro">Entreprises</span><span class="tag tag-part">Particuliers</span></div>
+          <h3>Conception de site web</h3>
+          <p>Vitrine, e-commerce ou plateforme sur-mesure : un site rapide, sécurisé et pensé pour convertir.</p>
+          <a class="service-link" href="services.html#web">En savoir plus →</a>
+        </article>
+
+        <article class="service-card" data-cat="pro part">
+          <div class="service-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="13.5" cy="6.5" r="3.5"/><circle cx="17.5" cy="17.5" r="3.5"/><circle cx="6" cy="14" r="3"/></svg></div>
+          <div class="tag-row"><span class="tag tag-pro">Entreprises</span><span class="tag tag-part">Particuliers</span></div>
+          <h3>Conception graphique</h3>
+          <p>Logo, charte graphique, supports imprimés et digitaux : une identité visuelle cohérente et mémorable, alignée sur votre positionnement.</p>
+          <a class="service-link" href="services.html#graphisme">En savoir plus →</a>
+        </article>
+
+        <article class="service-card" data-cat="pro">
+          <div class="service-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 17l6-6 4 4 8-8"/><path d="M21 3h-6v6"/></svg></div>
+          <div class="tag-row"><span class="tag tag-pro">Entreprises</span></div>
+          <h3>Stratégie marketing A à Z</h3>
+          <p>Audit, positionnement, acquisition, contenu : une stratégie marketing complète, pilotée de bout en bout et mesurée.</p>
+          <a class="service-link" href="services.html#marketing">En savoir plus →</a>
+        </article>
+
+        <article class="service-card" data-cat="pro">
+          <div class="service-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 00.34 1.87l.06.06a2 2 0 11-2.83 2.83l-.06-.06a1.7 1.7 0 00-1.87-.34 1.7 1.7 0 00-1 1.55V21a2 2 0 11-4 0v-.09a1.7 1.7 0 00-1-1.55 1.7 1.7 0 00-1.87.34l-.06.06a2 2 0 11-2.83-2.83l.06-.06a1.7 1.7 0 00.34-1.87 1.7 1.7 0 00-1.55-1H3a2 2 0 110-4h.09a1.7 1.7 0 001.55-1 1.7 1.7 0 00-.34-1.87l-.06-.06a2 2 0 112.83-2.83l.06.06a1.7 1.7 0 001.87.34H9a1.7 1.7 0 001-1.55V3a2 2 0 114 0v.09a1.7 1.7 0 001 1.55 1.7 1.7 0 001.87-.34l.06-.06a2 2 0 112.83 2.83l-.06.06a1.7 1.7 0 00-.34 1.87V9a1.7 1.7 0 001.55 1H21a2 2 0 110 4h-.09a1.7 1.7 0 00-1.55 1z"/></svg></div>
+          <div class="tag-row"><span class="tag tag-pro">Entreprises</span></div>
+          <h3>Optimisation de process interne</h3>
+          <p>Cartographie de vos flux, automatisation, choix des bons outils : gagnez en efficacité opérationnelle et réduisez les frictions.</p>
+          <a class="service-link" href="services.html#process">En savoir plus →</a>
+        </article>
+
+        <article class="service-card" data-cat="pro part">
+          <div class="service-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="4" width="16" height="10" rx="2"/><path d="M2 20h20M9 18l-1 2m8-2l1 2"/></svg></div>
+          <div class="tag-row"><span class="tag tag-pro">Entreprises</span><span class="tag tag-part">Particuliers</span></div>
+          <h3>Acquisition de matériel informatique</h3>
+          <p>Sourcing, achat et configuration de votre parc informatique — postes, périphériques, serveurs.</p>
+          <a class="service-link" href="services.html#materiel">En savoir plus →</a>
+        </article>
+
+        <article class="service-card" data-cat="part">
+          <div class="service-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 18v-6a9 9 0 0118 0v6"/><path d="M21 19a2 2 0 01-2 2h-1v-7h3zM3 19a2 2 0 002 2h1v-7H3z"/></svg></div>
+          <div class="tag-row"><span class="tag tag-part">Particuliers uniquement</span></div>
+          <h3>Support IT soft &amp; hard</h3>
+          <p>Dépannage logiciel et matériel, à domicile ou à distance, pour vos ordinateurs, téléphones et objets connectés.</p>
+          <a class="service-link" href="services.html#support">En savoir plus →</a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROCESS -->
+  <section id="process" style="background:var(--bg-soft);">
+    <div class="container">
+      <div class="section-head">
+        <span class="kicker">Notre méthode</span>
+        <h2>Un processus clair, sans surprise</h2>
+        <p>Quel que soit le service, vous savez toujours où vous en êtes.</p>
+      </div>
+      <div class="process-grid">
+        <div class="step">
+          <div class="num">1</div>
+          <h3>Échange &amp; audit gratuit</h3>
+          <p>On cerne votre besoin réel, vos contraintes et vos objectifs.</p>
+        </div>
+        <div class="step">
+          <div class="num">2</div>
+          <h3>Proposition &amp; devis clair</h3>
+          <p>Un périmètre précis, un devis clair, aucun frais caché.</p>
+        </div>
+        <div class="step">
+          <div class="num">3</div>
+          <h3>Réalisation &amp; points d'étape</h3>
+          <p>Vous suivez l'avancement, on ajuste ensemble si besoin.</p>
+        </div>
+        <div class="step">
+          <div class="num">4</div>
+          <h3>Livraison &amp; suivi</h3>
+          <p>Formation, documentation et disponibilité après livraison.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STATS -->
+  <section class="stats-section">
+    <div class="container stats-grid">
+      <div class="stat"><strong>6</strong><span>domaines d'expertise couverts</span></div>
+      <div class="stat"><strong>1</strong><span>interlocuteur unique du début à la fin</span></div>
+      <div class="stat"><strong>24h</strong><span>délai moyen de réponse à un devis</span></div>
+      <div class="stat"><strong>100%</strong><span>devis détaillé avant tout engagement</span></div>
+    </div>
+  </section>
+
+  <!-- NOTRE APPROCHE (pas de prix affichés) -->
+  <section id="approche">
+    <div class="container">
+      <div class="section-head">
+        <span class="kicker">Notre approche</span>
+        <h2>Un devis pensé pour votre projet, jamais un forfait générique</h2>
+        <p>Aucun tarif n'est affiché ici : chaque devis est établi après avoir compris votre besoin réel.</p>
+      </div>
+      <div class="approach-grid">
+        <div class="step">
+          <div class="num">1</div>
+          <h3>On échange d'abord</h3>
+          <p>Pas de chiffrage sans avoir cerné votre besoin, vos contraintes et vos objectifs.</p>
+        </div>
+        <div class="step">
+          <div class="num">2</div>
+          <h3>Devis sur mesure</h3>
+          <p>Une proposition adaptée à la complexité réelle du projet, détaillée et transparente.</p>
+        </div>
+        <div class="step">
+          <div class="num">3</div>
+          <h3>Sans engagement</h3>
+          <p>Le premier échange et le devis sont gratuits — vous décidez ensuite librement.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA BAND -->
+  <section>
+    <div class="container">
+      <div class="cta-band">
+        <div>
+          <h2>Un projet en tête ?</h2>
+          <p>Parlons-en. Premier échange et devis gratuits, sans engagement.</p>
+        </div>
+        <a href="#contact" class="btn btn-primary">Demander un devis gratuit</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" style="background:var(--bg-soft);">
+    <div class="container">
+      <div class="section-head">
+        <span class="kicker">Contact</span>
+        <h2>Parlons de votre projet</h2>
+        <p>Décrivez votre besoin, nous revenons vers vous sous 24h ouvrées.</p>
+      </div>
+      <div class="contact-grid">
+        <div class="contact-info">
+          <div class="item">
+            <span class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16v16H4z" opacity="0"/><path d="M22 6l-10 7L2 6"/><rect x="2" y="4" width="20" height="16" rx="2"/></svg></span>
+            <div><strong>Email</strong><span>contact@bmconsulting.example</span></div>
+          </div>
+          <div class="item">
+            <span class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.13.96.36 1.9.68 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.91.32 1.85.55 2.81.68A2 2 0 0122 16.92z"/></svg></span>
+            <div><strong>Téléphone</strong><span>+33 (0)0 00 00 00 00</span></div>
+          </div>
+          <div class="item">
+            <span class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 6-9 12-9 12s-9-6-9-12a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></span>
+            <div><strong>Zone d'intervention</strong><span>À distance ou sur site selon le service</span></div>
+          </div>
+        </div>
+        <form class="contact-form" onsubmit="return false;">
+          <div class="form-row">
+            <div class="field">
+              <label for="nom">Nom complet</label>
+              <input type="text" id="nom" name="nom" placeholder="Votre nom" required>
+            </div>
+            <div class="field">
+              <label for="email">Email</label>
+              <input type="email" id="email" name="email" placeholder="vous@exemple.com" required>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="field full">
+              <label for="service">Service souhaité</label>
+              <select id="service" name="service">
+                <option>Conception de site web</option>
+                <option>Conception graphique</option>
+                <option>Stratégie marketing A à Z</option>
+                <option>Optimisation de process interne</option>
+                <option>Acquisition de matériel informatique</option>
+                <option>Support IT (particuliers)</option>
+                <option>Autre / je ne sais pas encore</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="field full">
+              <label for="message">Votre message</label>
+              <textarea id="message" name="message" placeholder="Décrivez votre besoin en quelques lignes..."></textarea>
+            </div>
+          </div>
+          <button type="submit" class="btn btn-primary" style="width:100%;">Envoyer ma demande</button>
+          <p class="form-note">Formulaire de démonstration — non connecté. À brancher sur votre outil d'envoi (email, CRM...) avant mise en ligne.</p>
+        </form>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <a class="logo" href="#top" style="color:#fff;">
+          <span class="mark">B&M</span>
+          <span class="name" style="color:#fff;">B&M <span style="color:var(--accent);">Consulting</span></span>
+        </a>
+        <p style="font-size:13.5px; margin-top:14px; max-width:280px;">Solutions web, design, marketing, process &amp; IT — un seul interlocuteur, du particulier à l'entreprise.</p>
+      </div>
+      <div>
+        <h4>Services</h4>
+        <ul>
+          <li><a href="services.html#web">Site web</a></li>
+          <li><a href="services.html#graphisme">Graphisme</a></li>
+          <li><a href="services.html#marketing">Marketing</a></li>
+          <li><a href="services.html#process">Process interne</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Entreprise</h4>
+        <ul>
+          <li><a href="#process">Notre méthode</a></li>
+          <li><a href="#approche">Notre approche</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="mailto:contact@bmconsulting.example">contact@bmconsulting.example</a></li>
+          <li><a href="tel:+330000000000">+33 (0)0 00 00 00 00</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 B&M Consulting. Tous droits réservés.</span>
+      <span>Mockup de conception — contenu à valider</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Mobile menu toggle
+  const toggle = document.getElementById('menuToggle');
+  const navList = document.querySelector('nav.primary ul');
+  toggle.addEventListener('click', () => {
+    const expanded = toggle.getAttribute('aria-expanded') === 'true';
+    toggle.setAttribute('aria-expanded', String(!expanded));
+    navList.style.display = expanded ? 'none' : 'flex';
+    navList.style.cssText += expanded ? '' : 'position:absolute; top:64px; left:0; right:0; background:#fff; flex-direction:column; padding:20px 24px; border-bottom:1px solid var(--border); gap:16px;';
+  });
+
+  // Services filter
+  const filterBtns = document.querySelectorAll('.filter-btn');
+  const cards = document.querySelectorAll('#servicesGrid .service-card');
+  filterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      filterBtns.forEach(b => b.setAttribute('aria-pressed', 'false'));
+      btn.setAttribute('aria-pressed', 'true');
+      const filter = btn.dataset.filter;
+      cards.forEach(card => {
+        const cats = card.dataset.cat.split(' ');
+        card.style.display = (filter === 'all' || cats.includes(filter)) ? '' : 'none';
+      });
+    });
+  });
+</script>
+</body>
+</html>
