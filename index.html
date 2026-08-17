@@ -229,6 +229,59 @@
   .footer-grid a:hover{color:#fff;}
   .footer-bottom{display:flex; justify-content:space-between; align-items:center; padding-top:24px; font-size:12.5px; flex-wrap:wrap; gap:12px;}
 
+  /* ============ Animations & micro-interactions ============ */
+  header{transition:box-shadow .25s ease;}
+  header.scrolled{box-shadow:0 4px 24px rgba(11,36,71,0.12);}
+
+  .btn{transition:transform .12s ease, box-shadow .12s ease, background .15s ease;}
+  .btn:active{transform:scale(.96);}
+
+  nav.primary a{position:relative;}
+  nav.primary a::after{
+    content:""; position:absolute; left:0; right:100%; bottom:-4px; height:2px; background:var(--accent);
+    transition:right .25s cubic-bezier(.16,1,.3,1);
+  }
+  nav.primary a:hover::after{right:0;}
+
+  .filter-btn, .lang-btn{transition:background .2s ease, color .2s ease, border-color .2s ease;}
+
+  .service-icon{transition:transform .3s cubic-bezier(.16,1,.3,1);}
+  .service-card:hover .service-icon{transform:scale(1.1) rotate(-4deg);}
+
+  .trust-item .ic{transition:transform .3s ease, background .3s ease;}
+  .trust-item:hover .ic{transform:translateY(-3px); background:var(--accent-soft);}
+
+  .price-card{transition:transform .2s ease, box-shadow .2s ease;}
+  .price-card:hover{transform:translateY(-4px); box-shadow:var(--shadow-lg);}
+
+  input:focus, select:focus, textarea:focus{
+    outline:none; border-color:var(--accent); box-shadow:0 0 0 3px var(--accent-soft);
+    transition:box-shadow .15s ease, border-color .15s ease;
+  }
+
+  @media (prefers-reduced-motion: no-preference){
+    .js [data-reveal] > *{
+      opacity:0; transform:translateY(22px);
+      transition:opacity .6s cubic-bezier(.16,1,.3,1), transform .6s cubic-bezier(.16,1,.3,1);
+    }
+    .js [data-reveal].in-view > *{opacity:1; transform:translateY(0);}
+    .js [data-reveal] > *:nth-child(2){transition-delay:.08s}
+    .js [data-reveal] > *:nth-child(3){transition-delay:.16s}
+    .js [data-reveal] > *:nth-child(4){transition-delay:.24s}
+    .js [data-reveal] > *:nth-child(5){transition-delay:.32s}
+    .js [data-reveal] > *:nth-child(6){transition-delay:.4s}
+
+    @keyframes heroFadeUp{ from{opacity:0; transform:translateY(18px);} to{opacity:1; transform:translateY(0);} }
+    .hero .eyebrow{animation:heroFadeUp .7s cubic-bezier(.16,1,.3,1) both;}
+    .hero h1{animation:heroFadeUp .7s cubic-bezier(.16,1,.3,1) .08s both;}
+    .hero p.lead{animation:heroFadeUp .7s cubic-bezier(.16,1,.3,1) .16s both;}
+    .hero .hero-ctas{animation:heroFadeUp .7s cubic-bezier(.16,1,.3,1) .24s both;}
+    .hero-visual{animation:heroFadeUp .8s cubic-bezier(.16,1,.3,1) .3s both;}
+
+    @keyframes dotPulse{0%,100%{transform:scale(1); opacity:1;} 50%{transform:scale(1.5); opacity:.55;}}
+    .eyebrow .dot{animation:dotPulse 2.2s ease-in-out infinite;}
+  }
+
   @media (max-width:960px){
     .hero-inner{grid-template-columns:1fr;}
     .hero-visual{order:-1;}
@@ -238,7 +291,14 @@
     .footer-grid{grid-template-columns:1fr 1fr;}
   }
   @media (max-width:720px){
-    nav.primary ul, .btn-outline.nav-cta-desktop{display:none;}
+    .btn-outline.nav-cta-desktop{display:none;}
+    nav.primary ul{
+      display:flex; position:absolute; top:64px; left:0; right:0; background:#fff; flex-direction:column;
+      margin:0; padding:0 24px; border-bottom:1px solid var(--border); gap:16px;
+      max-height:0; opacity:0; overflow:hidden; pointer-events:none;
+      transition:max-height .3s ease, opacity .25s ease, padding .3s ease;
+    }
+    nav.primary ul.mobile-open{max-height:400px; opacity:1; padding:20px 24px; pointer-events:auto;}
     .menu-toggle{display:flex;}
     h1{font-size:32px;}
     .trust-grid, .process-grid, .services-grid, .pricing-grid, .approach-grid{grid-template-columns:1fr;}
@@ -249,6 +309,7 @@
 </style>
 </head>
 <body>
+<script>document.documentElement.classList.add('js');</script>
 <a class="skip-link" href="#main" data-i18n="skip_link">Aller au contenu principal</a>
 
 <header>
@@ -321,7 +382,7 @@
 
   <!-- TRUST BAR -->
   <div class="trust-bar">
-    <div class="container trust-grid">
+    <div class="container trust-grid" data-reveal>
       <div class="trust-item">
         <span class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg></span>
         <div><strong data-i18n="trust_quote_title">Devis sous 24h</strong><span data-i18n="trust_quote_desc">Réponse rapide et sans engagement</span></div>
@@ -356,7 +417,7 @@
         <button class="filter-btn" data-filter="part" aria-pressed="false" data-i18n="val_part">Particuliers</button>
       </div>
 
-      <div class="services-grid" id="servicesGrid">
+      <div class="services-grid" id="servicesGrid" data-reveal>
         <article class="service-card" data-cat="pro part">
           <div class="service-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 010 18M12 3a14 14 0 000 18"/></svg></div>
           <div class="tag-row"><span class="tag tag-pro" data-i18n="val_pro">Entreprises</span><span class="tag tag-part" data-i18n="val_part">Particuliers</span></div>
@@ -416,7 +477,7 @@
         <h2 data-i18n="process_h2">Un processus clair, sans surprise</h2>
         <p data-i18n="process_p">Quel que soit le service, vous savez toujours où vous en êtes.</p>
       </div>
-      <div class="process-grid">
+      <div class="process-grid" data-reveal>
         <div class="step">
           <div class="num">1</div>
           <h3 data-i18n="process_step1_title">Échange &amp; audit gratuit</h3>
@@ -443,7 +504,7 @@
 
   <!-- STATS -->
   <section class="stats-section">
-    <div class="container stats-grid">
+    <div class="container stats-grid" data-reveal>
       <div class="stat"><strong>6</strong><span data-i18n="stats_1_label">domaines d'expertise couverts</span></div>
       <div class="stat"><strong>1</strong><span data-i18n="stats_2_label">interlocuteur unique du début à la fin</span></div>
       <div class="stat"><strong>24h</strong><span data-i18n="stats_3_label">délai moyen de réponse à un devis</span></div>
@@ -459,7 +520,7 @@
         <h2 data-i18n="approach_h2">Un devis pensé pour votre projet, jamais un forfait générique</h2>
         <p data-i18n="approach_p">Aucun tarif n'est affiché ici : chaque devis est établi après avoir compris votre besoin réel.</p>
       </div>
-      <div class="approach-grid">
+      <div class="approach-grid" data-reveal>
         <div class="step">
           <div class="num">1</div>
           <h3 data-i18n="approach_step1_title">On échange d'abord</h3>
@@ -482,7 +543,7 @@
   <!-- CTA BAND -->
   <section>
     <div class="container">
-      <div class="cta-band">
+      <div class="cta-band" data-reveal>
         <div>
           <h2 data-i18n="cta_h2">Un projet en tête ?</h2>
           <p data-i18n="cta_p">Parlons-en. Premier échange et devis gratuits, sans engagement.</p>
@@ -500,7 +561,7 @@
         <h2 data-i18n="contact_h2">Parlons de votre projet</h2>
         <p data-i18n="contact_p">Décrivez votre besoin, nous revenons vers vous sous 24h ouvrées.</p>
       </div>
-      <div class="contact-grid">
+      <div class="contact-grid" data-reveal>
         <div class="contact-info">
           <div class="item">
             <span class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16v16H4z" opacity="0"/><path d="M22 6l-10 7L2 6"/><rect x="2" y="4" width="20" height="16" rx="2"/></svg></span>
@@ -754,8 +815,7 @@
   toggle.addEventListener('click', () => {
     const expanded = toggle.getAttribute('aria-expanded') === 'true';
     toggle.setAttribute('aria-expanded', String(!expanded));
-    navList.style.display = expanded ? 'none' : 'flex';
-    navList.style.cssText += expanded ? '' : 'position:absolute; top:64px; left:0; right:0; background:#fff; flex-direction:column; padding:20px 24px; border-bottom:1px solid var(--border); gap:16px;';
+    navList.classList.toggle('mobile-open', !expanded);
   });
 
   // Services filter
@@ -772,6 +832,57 @@
       });
     });
   });
+
+  // Header elevation on scroll
+  const header = document.querySelector('header');
+  let scrollTicking = false;
+  window.addEventListener('scroll', () => {
+    if (!scrollTicking) {
+      requestAnimationFrame(() => {
+        header.classList.toggle('scrolled', window.scrollY > 8);
+        scrollTicking = false;
+      });
+      scrollTicking = true;
+    }
+  }, { passive: true });
+
+  // Stat counters (count up once in view)
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function animateCount(el) {
+    const match = el.textContent.trim().match(/^(\d+)(.*)$/);
+    if (!match) return;
+    const target = parseInt(match[1], 10);
+    const suffix = match[2];
+    if (prefersReducedMotion) { el.textContent = target + suffix; return; }
+    const duration = 900;
+    const start = performance.now();
+    function tick(now) {
+      const p = Math.min((now - start) / duration, 1);
+      const eased = 1 - Math.pow(1 - p, 3);
+      el.textContent = Math.round(target * eased) + suffix;
+      if (p < 1) requestAnimationFrame(tick);
+    }
+    requestAnimationFrame(tick);
+  }
+
+  // Scroll reveal for grouped sections
+  const revealEls = document.querySelectorAll('[data-reveal]');
+  if ('IntersectionObserver' in window) {
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('in-view');
+          if (entry.target.classList.contains('stats-grid')) {
+            entry.target.querySelectorAll('.stat strong').forEach(animateCount);
+          }
+          io.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.2 });
+    revealEls.forEach(el => io.observe(el));
+  } else {
+    revealEls.forEach(el => el.classList.add('in-view'));
+  }
 </script>
 </body>
 </html>
