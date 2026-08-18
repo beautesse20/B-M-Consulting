@@ -80,9 +80,12 @@
   .lang-btn[aria-pressed="true"]{background:var(--navy); color:#fff;}
 
   /* Hero */
+  .stack-frame{position:relative;}
+  .stack-spacer{height:280px;}
+  @media (max-width:720px){ .stack-spacer{height:120px;} }
   .hero{
     background:linear-gradient(135deg, var(--navy-light) 0%, var(--navy) 55%, var(--navy-dark) 100%);
-    color:#fff; padding:110px 0 64px; position:relative;
+    color:#fff; padding:110px 0 64px; position:sticky; top:72px; z-index:1;
     min-height:calc(100vh - 72px);
     display:flex; align-items:center;
   }
@@ -144,7 +147,10 @@
   .pill-accent{background:var(--accent-soft); color:var(--accent-dark);}
 
   /* Trust bar */
-  .trust-bar{background:var(--bg-soft); border-bottom:1px solid var(--border);}
+  .trust-bar{
+    background:var(--bg-soft); border-bottom:1px solid var(--border);
+    position:relative; z-index:2; box-shadow:0 -20px 40px rgba(11,36,71,0.12);
+  }
   .trust-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:24px; padding:28px 0;}
   .trust-item{display:flex; align-items:center; gap:12px;}
   .trust-item .ic{
@@ -200,7 +206,8 @@
   .step p{font-size:13.5px; color:var(--text-muted); margin:0;}
 
   /* Stats */
-  .stats-section{background:var(--navy); color:#fff;}
+  .stats-section{background:var(--navy); color:#fff; position:sticky; top:72px; z-index:1;}
+  #approche{position:relative; z-index:2; background:var(--bg); box-shadow:0 -20px 40px rgba(11,36,71,0.12);}
   .stats-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:24px; text-align:center;}
   .stat strong{display:block; font-size:34px; font-weight:800; color:#fff;}
   .stat span{font-size:13.5px; color:#AFC0D9;}
@@ -400,6 +407,7 @@
 
 <main id="main">
   <!-- HERO -->
+  <div class="stack-frame">
   <section class="hero">
     <div class="container hero-inner">
       <div>
@@ -452,6 +460,8 @@
       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
     </a>
   </section>
+  <div class="stack-spacer" aria-hidden="true"></div>
+  </div>
 
   <!-- TRUST BAR -->
   <div class="trust-bar">
@@ -584,6 +594,7 @@
   </section>
 
   <!-- STATS -->
+  <div class="stack-frame">
   <section class="stats-section">
     <div class="container stats-grid" data-reveal>
       <div class="stat"><strong>7</strong><span data-i18n="stats_1_label">domaines d'expertise couverts</span></div>
@@ -592,6 +603,8 @@
       <div class="stat"><strong>100%</strong><span data-i18n="stats_4_label">devis détaillé avant tout engagement</span></div>
     </div>
   </section>
+  <div class="stack-spacer" aria-hidden="true"></div>
+  </div>
 
   <!-- NOTRE APPROCHE (pas de prix affichés) -->
   <section id="approche">
