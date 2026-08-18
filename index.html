@@ -81,11 +81,15 @@
 
   /* Hero */
   .hero{
-    background:radial-gradient(1200px 600px at 80% -10%, #163a63 0%, var(--navy) 45%, var(--navy-dark) 100%);
+    background:linear-gradient(135deg, var(--navy-light) 0%, var(--navy) 55%, var(--navy-dark) 100%);
     color:#fff; padding:88px 0 96px; position:relative; overflow:hidden;
   }
+  .hero::before{
+    content:""; position:absolute; inset:0; pointer-events:none;
+    background:radial-gradient(900px 500px at 85% -15%, rgba(255,255,255,0.08), transparent 60%);
+  }
   .hero::after{
-    content:""; position:absolute; inset:0;
+    content:""; position:absolute; inset:0; pointer-events:none;
     background:radial-gradient(600px 300px at 10% 110%, rgba(31,138,112,0.35), transparent 70%);
   }
   .hero-inner{position:relative; display:grid; grid-template-columns:1.1fr 0.9fr; gap:56px; align-items:center;}
@@ -270,6 +274,7 @@
     .js [data-reveal] > *:nth-child(4){transition-delay:.24s}
     .js [data-reveal] > *:nth-child(5){transition-delay:.32s}
     .js [data-reveal] > *:nth-child(6){transition-delay:.4s}
+    .js [data-reveal] > *:nth-child(7){transition-delay:.48s}
 
     @keyframes heroFadeUp{ from{opacity:0; transform:translateY(18px);} to{opacity:1; transform:translateY(0);} }
     .hero .eyebrow{animation:heroFadeUp .7s cubic-bezier(.16,1,.3,1) both;}
@@ -407,7 +412,7 @@
     <div class="container">
       <div class="section-head">
         <span class="kicker" data-i18n="services_kicker">Nos expertises</span>
-        <h2 data-i18n="services_h2">Six domaines, une seule équipe</h2>
+        <h2 data-i18n="services_h2">Sept domaines, une seule équipe</h2>
         <p data-i18n="services_p">Chaque service peut être mobilisé seul ou combiné selon vos besoins — un seul interlocuteur du début à la fin. Cette liste n'est pas exhaustive : parlons de votre besoin spécifique.</p>
       </div>
 
@@ -424,6 +429,14 @@
           <h3 data-i18n="card_web">Conception de site web</h3>
           <p data-i18n="svc_web_desc">Vitrine, e-commerce ou plateforme sur-mesure : un site rapide, sécurisé et pensé pour convertir.</p>
           <a class="service-link" href="services.html#web" data-i18n="link_more">En savoir plus →</a>
+        </article>
+
+        <article class="service-card" data-cat="pro part">
+          <div class="service-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="7" y="2" width="10" height="20" rx="2"/><line x1="11" y1="18" x2="13" y2="18"/></svg></div>
+          <div class="tag-row"><span class="tag tag-pro" data-i18n="val_pro">Entreprises</span><span class="tag tag-part" data-i18n="val_part">Particuliers</span></div>
+          <h3 data-i18n="card_mobile">Conception d'app mobile (iOS &amp; Android)</h3>
+          <p data-i18n="svc_mobile_desc">Applications natives ou cross-platform, pensées pour l'expérience utilisateur et publiées sur les stores.</p>
+          <a class="service-link" href="services.html#mobile" data-i18n="link_more">En savoir plus →</a>
         </article>
 
         <article class="service-card" data-cat="pro part">
@@ -592,6 +605,7 @@
               <label for="service" data-i18n="form_serviceLabel">Service souhaité</label>
               <select id="service" name="service">
                 <option data-i18n="card_web">Conception de site web</option>
+                <option data-i18n="card_mobile">Conception d'app mobile (iOS &amp; Android)</option>
                 <option data-i18n="svc_graphic_title">Conception graphique</option>
                 <option data-i18n="card_marketing">Stratégie marketing A à Z</option>
                 <option data-i18n="svc_process_title">Optimisation de process interne</option>
@@ -629,6 +643,7 @@
         <h4 data-i18n="nav_services">Services</h4>
         <ul>
           <li><a href="services.html#web" data-i18n="footer_link_web">Site web</a></li>
+          <li><a href="services.html#mobile" data-i18n="footer_link_mobile">App mobile</a></li>
           <li><a href="services.html#graphisme" data-i18n="footer_link_graphic">Graphisme</a></li>
           <li><a href="services.html#marketing" data-i18n="footer_link_marketing">Marketing</a></li>
           <li><a href="services.html#process" data-i18n="footer_link_process">Process interne</a></li>
@@ -670,7 +685,7 @@
       hero_h1: "Votre partenaire digital & IT, de la stratégie à l'exécution.",
       hero_lead: "Sites web, identité visuelle, marketing, optimisation de vos process et support informatique — pour les particuliers comme pour les entreprises.",
       hero_ctaPrimary: "Demander un devis gratuit", hero_ctaSecondary: "Voir nos services",
-      card_web: "Conception de site web", card_marketing: "Stratégie marketing A à Z",
+      card_web: "Conception de site web", card_mobile: "Conception d'app mobile (iOS & Android)", card_marketing: "Stratégie marketing A à Z",
       card_support: "Support IT à domicile", card_process: "Optimisation des process",
       card_more: "+ Graphisme, matériel IT...",
       val_pro: "Entreprises", val_part: "Particuliers", val_proPart: "Pro & Particulier", val_more: "Et plus",
@@ -678,11 +693,12 @@
       trust_support_title: "Accompagnement A à Z", trust_support_desc: "De l'audit à la livraison",
       trust_mix_title: "Pros & particuliers", trust_mix_desc: "Une offre adaptée à chaque profil",
       trust_custom_title: "100% sur-mesure", trust_custom_desc: "Chaque projet est unique",
-      services_kicker: "Nos expertises", services_h2: "Six domaines, une seule équipe",
+      services_kicker: "Nos expertises", services_h2: "Sept domaines, une seule équipe",
       services_p: "Chaque service peut être mobilisé seul ou combiné selon vos besoins — un seul interlocuteur du début à la fin. Cette liste n'est pas exhaustive : parlons de votre besoin spécifique.",
       filter_all: "Tous les services",
       tag_partOnly: "Particuliers uniquement", link_more: "En savoir plus →",
       svc_web_desc: "Vitrine, e-commerce ou plateforme sur-mesure : un site rapide, sécurisé et pensé pour convertir.",
+      svc_mobile_desc: "Applications natives ou cross-platform, pensées pour l'expérience utilisateur et publiées sur les stores.",
       svc_graphic_title: "Conception graphique",
       svc_graphic_desc: "Logo, charte graphique, supports imprimés et digitaux : une identité visuelle cohérente et mémorable, alignée sur votre positionnement.",
       svc_marketing_desc: "Audit, positionnement, acquisition, contenu : une stratégie marketing complète, pilotée de bout en bout et mesurée.",
@@ -715,7 +731,7 @@
       form_submitBtn: "Envoyer ma demande",
       form_note: "Formulaire de démonstration — non connecté. À brancher sur votre outil d'envoi (email, CRM...) avant mise en ligne.",
       footer_tagline: "Solutions web, design, marketing, process & IT — un seul interlocuteur, du particulier à l'entreprise.",
-      footer_link_web: "Site web", footer_link_graphic: "Graphisme", footer_link_marketing: "Marketing", footer_link_process: "Process interne",
+      footer_link_web: "Site web", footer_link_mobile: "App mobile", footer_link_graphic: "Graphisme", footer_link_marketing: "Marketing", footer_link_process: "Process interne",
       footer_companyHeading: "Entreprise",
       footer_copyright: "© 2026 B&M Consulting. Tous droits réservés.",
       footer_mockupNote: "Mockup de conception — contenu à valider"
@@ -731,7 +747,7 @@
       hero_h1: "Your digital & IT partner, from strategy to execution.",
       hero_lead: "Websites, visual identity, marketing, process optimization and IT support — for individuals and businesses alike.",
       hero_ctaPrimary: "Request a free quote", hero_ctaSecondary: "View our services",
-      card_web: "Website design", card_marketing: "End-to-end marketing strategy",
+      card_web: "Website design", card_mobile: "Mobile app design (iOS & Android)", card_marketing: "End-to-end marketing strategy",
       card_support: "At-home IT support", card_process: "Process optimization",
       card_more: "+ Graphic design, IT hardware...",
       val_pro: "Businesses", val_part: "Individuals", val_proPart: "Business & Individual", val_more: "And more",
@@ -739,11 +755,12 @@
       trust_support_title: "End-to-end support", trust_support_desc: "From audit to delivery",
       trust_mix_title: "Businesses & individuals", trust_mix_desc: "An offer tailored to every profile",
       trust_custom_title: "100% tailor-made", trust_custom_desc: "Every project is unique",
-      services_kicker: "Our expertise", services_h2: "Six areas, one team",
+      services_kicker: "Our expertise", services_h2: "Seven areas, one team",
       services_p: "Each service can be used on its own or combined, depending on your needs — one point of contact from start to finish. This list isn't exhaustive: let's talk about your specific need.",
       filter_all: "All services",
       tag_partOnly: "Individuals only", link_more: "Learn more →",
       svc_web_desc: "Showcase site, online store or custom platform: a fast, secure site built to convert.",
+      svc_mobile_desc: "Native or cross-platform apps, built around user experience and published to the app stores.",
       svc_graphic_title: "Graphic design",
       svc_graphic_desc: "Logo, brand guidelines, print and digital materials: a consistent, memorable visual identity aligned with your positioning.",
       svc_marketing_desc: "Audit, positioning, acquisition, content: a complete marketing strategy, managed end-to-end and measured.",
@@ -776,7 +793,7 @@
       form_submitBtn: "Send my request",
       form_note: "Demo form — not connected. Wire it up to your sending tool (email, CRM...) before going live.",
       footer_tagline: "Web, design, marketing, process & IT solutions — one point of contact, from individuals to businesses.",
-      footer_link_web: "Website", footer_link_graphic: "Graphic design", footer_link_marketing: "Marketing", footer_link_process: "Internal process",
+      footer_link_web: "Website", footer_link_mobile: "Mobile app", footer_link_graphic: "Graphic design", footer_link_marketing: "Marketing", footer_link_process: "Internal process",
       footer_companyHeading: "Company",
       footer_copyright: "© 2026 B&M Consulting. All rights reserved.",
       footer_mockupNote: "Design mockup — content to be validated"
