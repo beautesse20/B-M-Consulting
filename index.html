@@ -84,8 +84,10 @@
   .stack-spacer{height:380px;}
   .hero{
     background:linear-gradient(135deg, var(--navy-light) 0%, var(--navy) 55%, var(--navy-dark) 100%);
-    color:#fff; padding:88px 0 96px; position:sticky; top:72px; z-index:1; overflow:hidden;
+    color:#fff; padding:110px 0 64px; position:sticky; top:72px; z-index:1; overflow:hidden;
     border-radius:0 0 56px 56px;
+    min-height:calc(100vh - 72px);
+    display:flex; align-items:center;
   }
   .hero::before{
     content:""; position:absolute; inset:0; pointer-events:none;
@@ -95,7 +97,31 @@
     content:""; position:absolute; inset:0; pointer-events:none;
     background:radial-gradient(600px 300px at 10% 110%, rgba(31,138,112,0.35), transparent 70%);
   }
-  .hero-inner{position:relative; display:grid; grid-template-columns:1.1fr 0.9fr; gap:56px; align-items:center;}
+  .hero-inner{position:relative; width:100%; display:grid; grid-template-columns:1.1fr 0.9fr; gap:56px; align-items:center;}
+
+  /* Floating badges */
+  .hero-floaters{position:absolute; inset:0; pointer-events:none; z-index:1;}
+  .floater{position:absolute;}
+  .floater .bob{
+    display:flex; align-items:center; gap:8px;
+    background:rgba(255,255,255,0.1); border:1px solid rgba(255,255,255,0.22);
+    backdrop-filter:blur(10px); -webkit-backdrop-filter:blur(10px);
+    padding:10px 16px; border-radius:999px; font-size:13px; font-weight:700; color:#fff;
+    box-shadow:0 8px 24px rgba(7,26,51,0.35); white-space:nowrap;
+  }
+  .floater svg{flex-shrink:0; color:var(--accent);}
+  .floater-1{top:9%; left:62%;}
+  .floater-2{top:70%; left:52%;}
+  .floater-3{top:83%; left:78%;}
+
+  /* Scroll cue */
+  .hero-scrollcue{
+    position:absolute; left:50%; bottom:26px; transform:translateX(-50%);
+    display:flex; flex-direction:column; align-items:center; gap:6px;
+    color:rgba(255,255,255,0.7); text-decoration:none; z-index:2; font-size:11.5px; font-weight:700; letter-spacing:.04em; text-transform:uppercase;
+    transition:color .2s;
+  }
+  .hero-scrollcue:hover{color:#fff;}
   .eyebrow{
     display:inline-flex; align-items:center; gap:8px; background:rgba(255,255,255,0.1);
     border:1px solid rgba(255,255,255,0.18); padding:6px 14px; border-radius:999px; font-size:13px; font-weight:700; letter-spacing:.02em;
@@ -301,11 +327,31 @@
 
     @keyframes dotPulse{0%,100%{transform:scale(1); opacity:1;} 50%{transform:scale(1.5); opacity:.55;}}
     .eyebrow .dot{animation:dotPulse 2.2s ease-in-out infinite;}
+
+    @keyframes glowPulse{0%,100%{opacity:1; transform:scale(1);} 50%{opacity:.7; transform:scale(1.08);}}
+    .hero::before{animation:glowPulse 9s ease-in-out infinite;}
+    .hero::after{animation:glowPulse 11s ease-in-out infinite 1.5s;}
+
+    @keyframes floatIn{from{opacity:0; transform:translateY(14px) scale(.9);} to{opacity:1; transform:translateY(0) scale(1);}}
+    @keyframes floatBob{0%,100%{transform:translateY(0);} 50%{transform:translateY(-14px);}}
+    .floater{animation:floatIn .7s cubic-bezier(.16,1,.3,1) both;}
+    .floater-1{animation-delay:.5s;}
+    .floater-2{animation-delay:.62s;}
+    .floater-3{animation-delay:.74s;}
+    .floater-1 .bob{animation:floatBob 5.5s ease-in-out infinite 1.2s;}
+    .floater-2 .bob{animation:floatBob 6.5s ease-in-out infinite 1.8s;}
+    .floater-3 .bob{animation:floatBob 5s ease-in-out infinite 1.4s;}
+
+    @keyframes scrollCueBob{0%,100%{transform:translateY(0);} 50%{transform:translateY(6px);}}
+    .hero-scrollcue svg{animation:scrollCueBob 1.8s ease-in-out infinite;}
+    .hero-scrollcue{animation:heroFadeUp .7s cubic-bezier(.16,1,.3,1) .6s both;}
   }
 
   @media (max-width:960px){
     .hero-inner{grid-template-columns:1fr;}
     .hero-visual{order:-1;}
+    .hero-floaters{display:none;}
+    .hero{min-height:auto; padding:96px 0 88px;}
     .trust-grid, .process-grid, .services-grid, .pricing-grid, .approach-grid{grid-template-columns:repeat(2,1fr);}
     .stats-grid{grid-template-columns:repeat(2,1fr); gap:32px;}
     .contact-grid{grid-template-columns:1fr;}
@@ -367,7 +413,7 @@
 <main id="main">
   <!-- HERO -->
   <div class="stack-frame stack-frame-hero">
-  <section class="hero" style="padding-top:88px;">
+  <section class="hero">
     <div class="container hero-inner">
       <div>
         <span class="eyebrow"><span class="dot"></span> <span data-i18n="hero_eyebrow">Un interlocuteur unique, de A à Z</span></span>
@@ -403,6 +449,24 @@
         </div>
       </div>
     </div>
+    <div class="hero-floaters" aria-hidden="true">
+      <div class="floater floater-1"><div class="bob">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>
+        <span data-i18n="trust_quote_title">Devis sous 24h</span>
+      </div></div>
+      <div class="floater floater-2"><div class="bob">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+        <span data-i18n="trust_mix_title">Pros &amp; particuliers</span>
+      </div></div>
+      <div class="floater floater-3"><div class="bob">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l3 7h7l-5.5 4.5L18.5 21 12 16.8 5.5 21l2-7.5L2 9h7z"/></svg>
+        <span data-i18n="trust_custom_title">100% sur-mesure</span>
+      </div></div>
+    </div>
+    <a href="#services" class="hero-scrollcue" aria-label="Découvrir nos services" data-i18n-aria="hero_scrollAria">
+      <span data-i18n="hero_scrollCue">Découvrir</span>
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+    </a>
   </section>
   <div class="stack-spacer" aria-hidden="true"></div>
   </div>
@@ -710,6 +774,7 @@
       hero_h1: "Votre partenaire digital & IT, de la stratégie à l'exécution.",
       hero_lead: "Sites web, identité visuelle, marketing, optimisation de vos process et support informatique — pour les particuliers comme pour les entreprises.",
       hero_ctaPrimary: "Demander un devis gratuit", hero_ctaSecondary: "Voir nos services",
+      hero_scrollCue: "Découvrir", hero_scrollAria: "Découvrir nos services",
       card_web: "Conception de site web", card_mobile: "Conception d'app mobile (iOS & Android)", card_marketing: "Stratégie marketing A à Z",
       card_support: "Support IT à domicile", card_process: "Optimisation des process",
       card_more: "+ Graphisme, matériel IT...",
@@ -772,6 +837,7 @@
       hero_h1: "Your digital & IT partner, from strategy to execution.",
       hero_lead: "Websites, visual identity, marketing, process optimization and IT support — for individuals and businesses alike.",
       hero_ctaPrimary: "Request a free quote", hero_ctaSecondary: "View our services",
+      hero_scrollCue: "Explore", hero_scrollAria: "Explore our services",
       card_web: "Website design", card_mobile: "Mobile app design (iOS & Android)", card_marketing: "End-to-end marketing strategy",
       card_support: "At-home IT support", card_process: "Process optimization",
       card_more: "+ Graphic design, IT hardware...",
