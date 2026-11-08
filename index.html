@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
+<!-- Photos: Unsplash (licence gratuite, usage commercial autorisé) — unsplash.com -->
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title id="pageTitle">B&M Consulting — Sites web, design & IT pour particuliers et entreprises</title>
@@ -84,7 +86,9 @@
   .stack-spacer{height:280px;}
   @media (max-width:720px){ .stack-spacer{height:120px;} }
   .hero{
-    background:linear-gradient(135deg, var(--navy-light) 0%, var(--navy) 55%, var(--navy-dark) 100%);
+    background:
+      linear-gradient(135deg, rgba(18,57,95,0.93) 0%, rgba(11,36,71,0.88) 52%, rgba(7,26,51,0.95) 100%),
+      url('img/hero-office.jpg') center 35%/cover no-repeat;
     color:#fff; padding:110px 0 64px; position:sticky; top:72px; z-index:1;
     min-height:calc(100vh - 72px);
     display:flex; align-items:center;
@@ -204,6 +208,24 @@
   }
   .step h3{font-size:16px; margin:0 0 6px; color:var(--navy);}
   .step p{font-size:13.5px; color:var(--text-muted); margin:0;}
+
+  /* Approche — deux colonnes avec visuel */
+  .approach-wrap{display:grid; grid-template-columns:0.92fr 1.08fr; gap:52px; align-items:center;}
+  .approach-media{position:relative;}
+  .approach-media img{width:100%; height:100%; max-height:470px; object-fit:cover; border-radius:18px; box-shadow:var(--shadow-lg); display:block;}
+  .approach-badge{position:absolute; left:-20px; bottom:26px; background:#fff; border:1px solid var(--border); border-radius:14px; padding:14px 18px; box-shadow:var(--shadow-lg); display:flex; align-items:center; gap:12px; max-width:230px;}
+  .approach-badge .ab-ic{width:40px; height:40px; border-radius:10px; background:var(--accent-soft); color:var(--accent-dark); display:flex; align-items:center; justify-content:center; flex-shrink:0;}
+  .approach-badge strong{display:block; font-size:14.5px; color:var(--navy); line-height:1.2;}
+  .approach-badge span{font-size:12px; color:var(--text-muted);}
+  .approach-body .section-head{text-align:left; margin:0 0 26px; max-width:none;}
+  .approach-body .approach-grid{grid-template-columns:1fr; gap:14px;}
+  .approach-body .step{padding:18px 22px;}
+  .approach-body .step .num{margin-bottom:10px;}
+  @media (max-width:860px){
+    .approach-wrap{grid-template-columns:1fr; gap:30px;}
+    .approach-media img{max-height:320px;}
+    .approach-badge{left:16px;}
+  }
 
   /* Stats */
   .stats-section{background:var(--navy); color:#fff; position:sticky; top:72px; z-index:1;}
@@ -609,26 +631,37 @@
   <!-- NOTRE APPROCHE (pas de prix affichés) -->
   <section id="approche">
     <div class="container">
-      <div class="section-head">
-        <span class="kicker" data-i18n="nav_approach">Notre approche</span>
-        <h2 data-i18n="approach_h2">Un devis pensé pour votre projet, jamais un forfait générique</h2>
-        <p data-i18n="approach_p">Aucun tarif n'est affiché ici : chaque devis est établi après avoir compris votre besoin réel.</p>
-      </div>
-      <div class="approach-grid" data-reveal>
-        <div class="step">
-          <div class="num">1</div>
-          <h3 data-i18n="approach_step1_title">On échange d'abord</h3>
-          <p data-i18n="approach_step1_desc">Pas de chiffrage sans avoir cerné votre besoin, vos contraintes et vos objectifs.</p>
+      <div class="approach-wrap" data-reveal>
+        <div class="approach-media">
+          <img src="img/approche-team.jpg" alt="Une équipe de consultants échange autour d'un projet dans un bureau lumineux" loading="lazy" width="960" height="760">
+          <div class="approach-badge">
+            <span class="ab-ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span>
+            <div><strong data-i18n="approach_badge_title">Devis gratuit</strong><span data-i18n="approach_badge_desc">Sans engagement, sous 24h</span></div>
+          </div>
         </div>
-        <div class="step">
-          <div class="num">2</div>
-          <h3 data-i18n="approach_step2_title">Devis sur mesure</h3>
-          <p data-i18n="approach_step2_desc">Une proposition adaptée à la complexité réelle du projet, détaillée et transparente.</p>
-        </div>
-        <div class="step">
-          <div class="num">3</div>
-          <h3 data-i18n="approach_step3_title">Sans engagement</h3>
-          <p data-i18n="approach_step3_desc">Le premier échange et le devis sont gratuits — vous décidez ensuite librement.</p>
+        <div class="approach-body">
+          <div class="section-head">
+            <span class="kicker" data-i18n="nav_approach">Notre approche</span>
+            <h2 data-i18n="approach_h2">Un devis pensé pour votre projet, jamais un forfait générique</h2>
+            <p data-i18n="approach_p">Aucun tarif n'est affiché ici : chaque devis est établi après avoir compris votre besoin réel.</p>
+          </div>
+          <div class="approach-grid">
+            <div class="step">
+              <div class="num">1</div>
+              <h3 data-i18n="approach_step1_title">On échange d'abord</h3>
+              <p data-i18n="approach_step1_desc">Pas de chiffrage sans avoir cerné votre besoin, vos contraintes et vos objectifs.</p>
+            </div>
+            <div class="step">
+              <div class="num">2</div>
+              <h3 data-i18n="approach_step2_title">Devis sur mesure</h3>
+              <p data-i18n="approach_step2_desc">Une proposition adaptée à la complexité réelle du projet, détaillée et transparente.</p>
+            </div>
+            <div class="step">
+              <div class="num">3</div>
+              <h3 data-i18n="approach_step3_title">Sans engagement</h3>
+              <p data-i18n="approach_step3_desc">Le premier échange et le devis sont gratuits — vous décidez ensuite librement.</p>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -802,6 +835,7 @@
       approach_step1_title: "On échange d'abord", approach_step1_desc: "Pas de chiffrage sans avoir cerné votre besoin, vos contraintes et vos objectifs.",
       approach_step2_title: "Devis sur mesure", approach_step2_desc: "Une proposition adaptée à la complexité réelle du projet, détaillée et transparente.",
       approach_step3_title: "Sans engagement", approach_step3_desc: "Le premier échange et le devis sont gratuits — vous décidez ensuite librement.",
+      approach_badge_title: "Devis gratuit", approach_badge_desc: "Sans engagement, sous 24h",
       cta_h2: "Un projet en tête ?", cta_p: "Parlons-en. Premier échange et devis gratuits, sans engagement.",
       contact_h2: "Parlons de votre projet", contact_p: "Décrivez votre besoin, nous revenons vers vous sous 24h ouvrées.",
       contact_emailLabel: "Email", contact_phoneLabel: "Téléphone",
@@ -865,6 +899,7 @@
       approach_step1_title: "We talk first", approach_step1_desc: "No pricing without first understanding your needs, constraints and goals.",
       approach_step2_title: "Custom quote", approach_step2_desc: "A proposal matched to the project's real complexity, detailed and transparent.",
       approach_step3_title: "No obligation", approach_step3_desc: "The first conversation and the quote are free — you decide freely afterward.",
+      approach_badge_title: "Free quote", approach_badge_desc: "No commitment, within 24h",
       cta_h2: "Have a project in mind?", cta_p: "Let's talk. First conversation and quote are free, no obligation.",
       contact_h2: "Let's talk about your project", contact_p: "Describe your need, and we'll get back to you within 24 business hours.",
       contact_emailLabel: "Email", contact_phoneLabel: "Phone",
