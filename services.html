@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 <head>
 <!-- Photos: Unsplash (licence gratuite, usage commercial autorisé) — unsplash.com -->
 
@@ -184,8 +184,8 @@
     </nav>
     <div style="display:flex; align-items:center; gap:12px;">
       <div class="lang-switch" role="group" aria-label="Langue / Language">
-        <button class="lang-btn" data-lang="fr" aria-pressed="true">FR</button>
-        <button class="lang-btn" data-lang="en" aria-pressed="false">EN</button>
+        <button class="lang-btn" data-lang="fr" aria-pressed="false">FR</button>
+        <button class="lang-btn" data-lang="en" aria-pressed="true">EN</button>
       </div>
       <a href="index.html#contact" class="btn btn-primary" data-i18n="nav_quoteBtn">Devis gratuit</a>
       <button class="menu-toggle" aria-label="Ouvrir le menu" data-i18n-aria="aria_openMenu" aria-expanded="false"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button>
@@ -539,7 +539,6 @@
 <footer>
   <div class="container footer-bottom">
     <span data-i18n="footer_copyright">© 2026 B&M Consulting. Tous droits réservés.</span>
-    <span data-i18n="footer_mockupNote">Mockup de conception — contenu à valider</span>
   </div>
 </footer>
 
@@ -603,7 +602,7 @@
       support_home_title: "Intervention à domicile", support_home_1: "Panne matérielle, installation, réseau", support_home_2: "Zone de déplacement à définir",
       cta_h2: "Pas sûr du service qu'il vous faut ?", cta_p: "Décrivez votre besoin, on vous oriente gratuitement vers la bonne solution.",
       cta_btn: "Demander un devis gratuit",
-      footer_copyright: "© 2026 B&M Consulting. Tous droits réservés.", footer_mockupNote: "Mockup de conception — contenu à valider"
+      footer_copyright: "© 2026 B&M Consulting. Tous droits réservés."
     },
     en: {
       meta_title: "Our Services — B&M Consulting",
@@ -663,7 +662,7 @@
       support_home_title: "On-site support", support_home_1: "Hardware failure, installation, networking", support_home_2: "Service area to be defined",
       cta_h2: "Not sure which service you need?", cta_p: "Describe your need, and we'll point you to the right solution for free.",
       cta_btn: "Request a free quote",
-      footer_copyright: "© 2026 B&M Consulting. All rights reserved.", footer_mockupNote: "Design mockup — content to be validated"
+      footer_copyright: "© 2026 B&M Consulting. All rights reserved."
     }
   };
 
@@ -685,8 +684,17 @@
     });
   }
 
+  // Default landing language is English; a visitor's own choice is remembered across pages and visits
+  const LANG_KEY = 'bm_lang';
+  let savedLang = null;
+  try { savedLang = localStorage.getItem(LANG_KEY); } catch (e) {}
+  applyLang(I18N[savedLang] ? savedLang : 'en');
+
   document.querySelectorAll('.lang-btn').forEach(btn => {
-    btn.addEventListener('click', () => applyLang(btn.dataset.lang));
+    btn.addEventListener('click', () => {
+      applyLang(btn.dataset.lang);
+      try { localStorage.setItem(LANG_KEY, btn.dataset.lang); } catch (e) {}
+    });
   });
 
   const menuToggle = document.querySelector('.menu-toggle');

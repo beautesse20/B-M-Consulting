@@ -703,7 +703,8 @@
             <div><strong data-i18n="contact_zoneLabel">Zone d'intervention</strong><span data-i18n="contact_zoneValue">À distance ou sur site selon le service</span></div>
           </div>
         </div>
-        <form class="contact-form" onsubmit="return false;">
+        <form class="contact-form" id="contactForm" novalidate>
+          <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
           <div class="form-row">
             <div class="field">
               <label for="nom" data-i18n="form_nameLabel">Nom complet</label>
@@ -736,7 +737,7 @@
             </div>
           </div>
           <button type="submit" class="btn btn-primary" style="width:100%;" data-i18n="form_submitBtn">Envoyer ma demande</button>
-          <p class="form-note" data-i18n="form_note">Formulaire de démonstration — non connecté. À brancher sur votre outil d'envoi (email, CRM...) avant mise en ligne.</p>
+          <p class="form-note" id="formStatus" role="status" aria-live="polite" data-i18n="form_note">Vos informations servent uniquement à répondre à votre demande.</p>
         </form>
       </div>
     </div>
@@ -781,7 +782,6 @@
     </div>
     <div class="footer-bottom">
       <span data-i18n="footer_copyright">© 2026 B&M Consulting. Tous droits réservés.</span>
-      <span data-i18n="footer_mockupNote">Mockup de conception — contenu à valider</span>
     </div>
   </div>
 </footer>
@@ -845,12 +845,12 @@
       form_opt6: "Support IT (particuliers)", form_opt7: "Autre / je ne sais pas encore",
       form_messageLabel: "Votre message", form_messagePlaceholder: "Décrivez votre besoin en quelques lignes...",
       form_submitBtn: "Envoyer ma demande",
-      form_note: "Formulaire de démonstration — non connecté. À brancher sur votre outil d'envoi (email, CRM...) avant mise en ligne.",
+      form_note: "Vos informations servent uniquement à répondre à votre demande.",
+      form_sending: "Envoi en cours…", form_success: "Merci ! Votre demande a bien été envoyée. Nous vous répondrons rapidement.", form_error: "L'envoi a échoué. Écrivez-nous directement à beautesse.pro@gmail.com.", form_invalid: "Merci d'indiquer votre nom et une adresse email valide.",
       footer_tagline: "Solutions web, design, marketing, process & IT — un seul interlocuteur, du particulier à l'entreprise.",
       footer_link_web: "Site web", footer_link_mobile: "App mobile", footer_link_graphic: "Graphisme", footer_link_marketing: "Marketing", footer_link_process: "Process interne",
       footer_companyHeading: "Entreprise",
-      footer_copyright: "© 2026 B&M Consulting. Tous droits réservés.",
-      footer_mockupNote: "Mockup de conception — contenu à valider"
+      footer_copyright: "© 2026 B&M Consulting. Tous droits réservés."
     },
     en: {
       meta_title: "B&M Consulting — Web, design & IT services for individuals and businesses",
@@ -909,12 +909,12 @@
       form_opt6: "IT support (individuals)", form_opt7: "Other / not sure yet",
       form_messageLabel: "Your message", form_messagePlaceholder: "Describe your need in a few lines...",
       form_submitBtn: "Send my request",
-      form_note: "Demo form — not connected. Wire it up to your sending tool (email, CRM...) before going live.",
+      form_note: "Your details are only used to reply to your request.",
+      form_sending: "Sending…", form_success: "Thank you! Your request has been sent. We'll get back to you shortly.", form_error: "Sending failed. Please email us directly at beautesse.pro@gmail.com.", form_invalid: "Please enter your name and a valid email address.",
       footer_tagline: "Web, design, marketing, process & IT solutions — one point of contact, from individuals to businesses.",
       footer_link_web: "Website", footer_link_mobile: "Mobile app", footer_link_graphic: "Graphic design", footer_link_marketing: "Marketing", footer_link_process: "Internal process",
       footer_companyHeading: "Company",
-      footer_copyright: "© 2026 B&M Consulting. All rights reserved.",
-      footer_mockupNote: "Design mockup — content to be validated"
+      footer_copyright: "© 2026 B&M Consulting. All rights reserved."
     }
   };
 
@@ -951,6 +951,41 @@
       applyLang(btn.dataset.lang);
       try { localStorage.setItem(LANG_KEY, btn.dataset.lang); } catch (e) {}
     });
+  });
+
+
+  // Contact form → emails beautesse.pro@gmail.com via FormSubmit
+  const contactForm = document.getElementById('contactForm');
+  const formStatus = document.getElementById('formStatus');
+  contactForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const dict = I18N[document.documentElement.lang] || I18N.en;
+    if (!contactForm.checkValidity()) { formStatus.textContent = dict.form_invalid; return; }
+    const btn = contactForm.querySelector('button[type="submit"]');
+    const data = Object.fromEntries(new FormData(contactForm));
+    if (data._honey) return;
+    const svc = contactForm.querySelector('#service');
+    btn.disabled = true; formStatus.textContent = dict.form_sending;
+    try {
+      const res = await fetch('https://formsubmit.co/ajax/beautesse.pro@gmail.com', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify({
+          _subject: 'New website request — B&M Consulting',
+          _template: 'table',
+          _replyto: data.email,
+          Name: data.nom, Email: data.email,
+          Service: svc && svc.selectedIndex >= 0 ? svc.options[svc.selectedIndex].text : '',
+          Message: data.message || '',
+          Language: document.documentElement.lang
+        })
+      });
+      const out = await res.json().catch(() => ({}));
+      if (!res.ok || String(out.success) !== 'true') throw new Error('send failed');
+      contactForm.reset(); formStatus.textContent = dict.form_success;
+    } catch (err) {
+      formStatus.textContent = dict.form_error;
+    } finally { btn.disabled = false; }
   });
 
   // Mobile menu toggle
